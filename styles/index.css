@@ -1,0 +1,40 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+
+#banner-alert {
+  background: #eee;
+  border-bottom-width: 1px;
+  border-color: white;
+}
+
+path {
+  fill: black;
+}
+
+#footer {
+  background: #FAFAFA;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background: #222;
+    color: white;
+  }
+
+  #banner-alert {
+    background: #333;
+    border-color: #222;
+  }
+
+  path {
+    fill: white;
+  }
+
+  #footer {
+    background: #333;
+    border-color: black;
+  }
+}
