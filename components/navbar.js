@@ -1,6 +1,7 @@
 import {
   useState, useEffect
 } from 'react'
+import NavbarDrop from './navbar-drop'
 
 export default () => {
   const [isOpen, setNavbarOpen] = useState(false)
@@ -25,23 +26,23 @@ export default () => {
           </svg>
         </button>
       </div>
-      {isOpen && (
-        <div id="navbar-items" className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div className="text-sm lg:flex-grow">
-            {/* LEFT SIDE OF NAV (LARGE SCREEN) */}
-          </div>
-          <div>
-            {/* RIGHT SIDE OF NAV (LARGE SCREEN) */}
-            <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Docs
+      <div style={{ display: `${isOpen ? 'flex' : 'none'}` }} id="navbar-items" className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div className="text-sm lg:flex-grow">
+          {/* LEFT SIDE OF NAV (LARGE SCREEN) */}
+        </div>
+        <div>
+          {/* RIGHT SIDE OF NAV (LARGE SCREEN) */}
+          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            Docs
             </a>
-            <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Examples
+          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            Examples
             </a>
-            <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Blog
+          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            Blog
             </a>
-            {/*
+          <NavbarDrop />
+          {/*
               <strong className="mr-4 hidden lg:inline-block">|</strong>
               <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
                 Log In
@@ -50,9 +51,8 @@ export default () => {
                 Sign up
               </a>
             */}
-          </div>
         </div>
-      )}
+      </div>
     </nav>
   )
 }
