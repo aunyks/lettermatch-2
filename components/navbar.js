@@ -1,7 +1,6 @@
 import {
   useState, useEffect
 } from 'react'
-import NavbarDrop from './navbar-drop'
 
 export default () => {
   const [isOpen, setNavbarOpen] = useState(false)
@@ -16,7 +15,7 @@ export default () => {
   return (
     <nav className="flex items-center justify-between flex-wrap p-6">
       <div className="flex items-center flex-shrink-0 mr-6">
-        <span className="font-semibold text-xl tracking-tight">MEZCLA</span>
+        <a href="/" className="font-semibold text-xl tracking-tight">MEZCLA</a>
       </div>
       <div className="block lg:hidden">
         <button onClick={() => setNavbarOpen(!isOpen)} className="flex items-center">
@@ -32,16 +31,19 @@ export default () => {
         </div>
         <div>
           {/* RIGHT SIDE OF NAV (LARGE SCREEN) */}
-          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-            Docs
+          <a href="/" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            Home
             </a>
-          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-            Examples
+          <a href="/shop" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            Shop
             </a>
-          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-            Blog
+          <a href="/about" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            About
             </a>
-          <NavbarDrop />
+          <a onClick={() => alert('For all inquiries:\ncontact@mezcla.xyz')} className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            Contact
+            </a>
+
           {/*
               <strong className="mr-4 hidden lg:inline-block">|</strong>
               <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">

@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <footer id="footer" className="border-t border-accent-2">
       <Container>
-        <div className="py-5 flex flex-col lg:flex-row items-center">
+        <div className="py-4 flex flex-col lg:flex-row items-center">
           <h3 className="text-base tracking-tighter leading-tight text-center lg:text-left mb-5 lg:mb-0 lg:pr-4 lg:w-1/2">
-            Beyond reality.
+            BEYOND REALITY.
           </h3>
           <div className="flex flex-row-reverse lg:pl-4 lg:w-1/2">
             <a

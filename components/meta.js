@@ -26,18 +26,18 @@ export default function Meta() {
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta key="desc" name="description" content="Technology is culture." />
+      <meta key="desc" name="description" content="Find clothing, posters and accessories with mixed reality experiences." />
       <meta key="tw-img-src" name="twitter:image" content="https://trustless.science/assets/default-card.png" />
       <meta key="tw-site" name="twitter:site" content="@thetrustless" />
       <meta key="tw-card" name="twitter:card" content="summary_large_image" />
-      <meta key="tw-title" name="twitter:title" content="The Trustless Log" />
-      <meta key="tw-desc" name="twitter:description" content="Technology is culture." />
+      <meta key="tw-title" name="twitter:title" content="MEZCLA" />
+      <meta key="tw-desc" name="twitter:description" content="Find clothing, posters and accessories with mixed reality experiences." />
       <meta key="og-img" property="og:image" content="https://trustless.science/assets/default-card.png" />
-      <meta key="og-site-name" property="og:site_name" content="The Trustless Log" />
+      <meta key="og-site-name" property="og:site_name" content="MEZCLA" />
       <meta key="og-type" property="og:type" content="blog" />
-      <meta key="og-title" property="og:title" content="The Trustless Log" />
+      <meta key="og-title" property="og:title" content="MEZCLA" />
       <meta key="og-url" property="og:url" content="https://trustless.science" />
-      <meta key="og-desc" property="og:description" content="Technology is culture." />
+      <meta key="og-desc" property="og:description" content="Find clothing, posters and accessories with mixed reality experiences." />
     </Head>
   )
 }
