@@ -10,6 +10,11 @@
   border-color: white;
 }
 
+.add-to-cart {
+  background: #222;
+  color: white;
+}
+
 path {
   fill: black;
 }
@@ -28,6 +33,11 @@ path {
     background: #333;
     border-color: #222;
   }
+
+  .add-to-cart {
+    background: white;
+    color: black;
+  }  
 
   path {
     fill: white;

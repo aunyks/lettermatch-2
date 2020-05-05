@@ -38,3 +38,4 @@ export default ({ children }) => {
 
 // Custom hook that shorhands the context!
 export const useUser = () => useContext(UserContext)
+export const useUser = () => { }
