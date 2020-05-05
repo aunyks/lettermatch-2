@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Container from '../components/container'
 import Layout from '../components/layout'
 
-export default () => {
+export default function HomePage() {
   /*
   const { loadingUser, user } = useUser()
   useEffect(() => {
