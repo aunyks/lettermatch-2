@@ -108,7 +108,7 @@ export default function ItemPage() {
                 }).map(labelTitle => {
                   const variantKey = variesBy[labelTitle]
                   return (
-                    <div class="inline-block" key={variantKey}>
+                    <div className="inline-block" key={variantKey}>
                       <label className="mr-2 my-2" htmlFor={variantKey}>
                         {labelTitle}
                       </label>
