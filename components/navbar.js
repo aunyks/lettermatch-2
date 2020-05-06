@@ -13,23 +13,6 @@ export default () => {
     if (document.body.clientWidth >= largeScreenW) {
       setNavbarOpen(true)
     }
-    /*
-    const cart = window.localStorage.getItem('cart')
-    if (!cart) {
-      setCartLen(1)
-    } else {
-      const totalQty = JSON.parse(cart)
-        .reduce((itemA, itemB) => itemA.qty + itemB.qty, { qty: 0 })
-      setCartLen(totalQty)
-    }
-    window.addEventListener('message', e => {
-      if (e.origin !== window.location.origin) return;
-      if (e.data === 'new-cart-item') {
-        alert(cartLen)
-        setCartLen(cartLen + 1)
-      }
-    }, false)
-    */
   }, [])
   return (
     <nav className="flex items-center justify-between flex-wrap p-6">
@@ -72,8 +55,8 @@ export default () => {
                 Sign up
               </a>
             */}
-          <a href="/checkout" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-            {cartLen === null ? 'Checkout' : `Checkout (${cartLen})`}
+          <a href="/cart" className="underline block mt-4 lg:inline-block lg:mt-0 mr-4">
+            Cart
           </a>
         </div>
       </div>

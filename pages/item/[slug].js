@@ -83,6 +83,7 @@ export default function ItemPage() {
     return loadingItemPage
   }
   const {
+    slug,
     name,
     defaultImg,
     description,
@@ -163,6 +164,7 @@ export default function ItemPage() {
                     let currentCart = browserStorage.getItem('cart')
                     if (currentCart === null) {
                       currentCart = [{
+                        slug,
                         name,
                         price,
                         img: defaultImg,
@@ -180,6 +182,7 @@ export default function ItemPage() {
                       } else {
                         // add it to the cart brand new
                         currentCart = [...trueCart, {
+                          slug,
                           name,
                           price,
                           img: defaultImg,
@@ -189,7 +192,9 @@ export default function ItemPage() {
                       }
                     }
                     browserStorage.setItem('cart', JSON.stringify(currentCart))
-                    window.postMessage('new-cart-item')
+                    if (confirm('Item added to cart! Ready to check out?')) {
+                      window.location.pathname = '/cart'
+                    }
                   }
                 }}>
                 Add to Cart
