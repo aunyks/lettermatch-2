@@ -5,8 +5,9 @@ import {
 import Head from 'next/head'
 import Container from '../../components/container'
 import Layout from '../../components/layout'
+import ItemBox from '../../components/item-box'
 
-const unknownPage = (
+const unknownItemPage = (
   <>
     <Layout>
       <Head>
@@ -21,7 +22,7 @@ const unknownPage = (
   </>
 )
 
-const loadingPage = (
+const loadingItemPage = (
   <>
     <Layout>
       <Head>
@@ -40,10 +41,13 @@ export default function ItemPage() {
   const [item, setItem] = useState(null)
   const [isLoading, setLoading] = useState(true)
   const [variantOptions, updateVariant] = useState({})
+  const [browserStorage, setStorage] = useState(null)
+  const [relatedItems, setRelatedItems] = useState(null)
   useEffect(() => {
     const firebase = require('../../firebase/clientApp')
     const pathLevels = window.location.pathname.split('/')
     const slug = pathLevels[pathLevels.length - 1]
+    setStorage(window.localStorage)
     async function asyncBoi() {
       try {
         const itemResult = await firebase.firestore().collection('items').where('slug', '==', slug).get()
@@ -56,6 +60,14 @@ export default function ItemPage() {
         delete someVariant.sku
         updateVariant(someVariant)
         setItem(foundItem)
+
+        // just random items for now
+        const fbRelatedItems = await firebase.firestore().collection('items').orderBy('additionDate').get()
+        let tempRelatedItemsList = []
+        fbRelatedItems.forEach(n => {
+          tempRelatedItemsList.push({ ...n.data(), id: n.id })
+        })
+        setRelatedItems(tempRelatedItemsList)
       } catch (e) {
         console.error(e)
       } finally {
@@ -65,10 +77,10 @@ export default function ItemPage() {
     asyncBoi()
   }, [])
   if (!isLoading && item === null) {
-    return unknownPage
+    return unknownItemPage
   }
   if (isLoading) {
-    return loadingPage
+    return loadingItemPage
   }
   const {
     name,
@@ -85,12 +97,12 @@ export default function ItemPage() {
           <title>{name} - MEZCLA</title>
         </Head>
         <div className="px-6 pb-12">
-          <section className="mb-6 lg:mb-12">
+          <main className="mb-6 mx-auto lg:mb-12 lg:w-3/5">
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
               {name}
             </h1>
-            <img className="my-5 mx-auto lg:w-2/5 lg:h-2/5" src={defaultImg} />
-            <div className="mx-auto lg:w-2/5">
+            <img className="my-5 lg:h-2/4" src={defaultImg} />
+            <div>
               <h2 className="font-bold text-2xl">
                 {
                   (new Intl.NumberFormat('en-US', {
@@ -143,9 +155,42 @@ export default function ItemPage() {
                 }
                 className="add-to-cart border rounded py-2 w-full my-2"
                 onClick={() => {
-                  alert(variants.find(v => {
+                  const chosenVariant = variants.find(v => {
                     return Object.keys(variantOptions).every(k => v[k] === variantOptions[k])
-                  }).sku)
+                  })
+                  const sku = chosenVariant.sku
+                  if (browserStorage !== null) {
+                    let currentCart = browserStorage.getItem('cart')
+                    if (currentCart === null) {
+                      currentCart = [{
+                        name,
+                        price,
+                        img: defaultImg,
+                        qty: 1,
+                        sku
+                      }]
+                    } else {
+                      const itemWithVariantSku = cartItem => cartItem.sku === chosenVariant.sku
+                      const trueCart = JSON.parse(currentCart)
+                      if (trueCart.some(itemWithVariantSku)) {
+                        // increment the item quantity if this variant's in the cart
+                        const cartItemIndex = trueCart.findIndex(itemWithVariantSku)
+                        currentCart = [...trueCart]
+                        currentCart[cartItemIndex].qty = currentCart[cartItemIndex].qty + 1
+                      } else {
+                        // add it to the cart brand new
+                        currentCart = [...trueCart, {
+                          name,
+                          price,
+                          img: defaultImg,
+                          sku,
+                          qty: 1
+                        }]
+                      }
+                    }
+                    browserStorage.setItem('cart', JSON.stringify(currentCart))
+                    window.postMessage('new-cart-item')
+                  }
                 }}>
                 Add to Cart
               </button>
@@ -153,15 +198,29 @@ export default function ItemPage() {
                 {description}
               </p>
             </div>
-          </section>
-          <section className="mx-auto lg:w-2/5">
+          </main>
+          <section className="mx-auto lg:w-3/5">
             <h3 className="font-bold text-3xl">
               Related Items
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-3">
-              <span>sumn</span>
-              <span>sumn</span>
-              <span>sumn</span>
+              {
+                relatedItems
+                  .filter(({ slug }) => slug !== item.slug)
+                  .map(({ id, slug, name, price, description, defaultImg }) =>
+                    <div className="py-3" key={id}>
+                      <ItemBox
+                        id={id}
+                        slug={slug}
+                        name={name}
+                        price={price}
+                        description={description}
+                        image={defaultImg}
+                        noDescription
+                      />
+                    </div>
+                  )
+              }
             </div>
           </section>
         </div>

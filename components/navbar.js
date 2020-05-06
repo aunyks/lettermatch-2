@@ -1,9 +1,11 @@
 import {
-  useState, useEffect
+  useState,
+  useEffect
 } from 'react'
 
 export default () => {
   const [isOpen, setNavbarOpen] = useState(false)
+  const [cartLen, setCartLen] = useState(null)
   useEffect(() => {
     const smallScreenW = 640
     const mediumScreenW = 768
@@ -11,6 +13,23 @@ export default () => {
     if (document.body.clientWidth >= largeScreenW) {
       setNavbarOpen(true)
     }
+    /*
+    const cart = window.localStorage.getItem('cart')
+    if (!cart) {
+      setCartLen(1)
+    } else {
+      const totalQty = JSON.parse(cart)
+        .reduce((itemA, itemB) => itemA.qty + itemB.qty, { qty: 0 })
+      setCartLen(totalQty)
+    }
+    window.addEventListener('message', e => {
+      if (e.origin !== window.location.origin) return;
+      if (e.data === 'new-cart-item') {
+        alert(cartLen)
+        setCartLen(cartLen + 1)
+      }
+    }, false)
+    */
   }, [])
   return (
     <nav className="flex items-center justify-between flex-wrap p-6">
@@ -40,7 +59,7 @@ export default () => {
           <a href="/about" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
             About
             </a>
-          <a onClick={() => alert('For all inquiries:\ncontact@mezcla.xyz')} className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+          <a style={{ cursor: 'pointer' }} onClick={() => alert('For all inquiries:\ncontact@mezcla.xyz')} className="block mt-4 lg:inline-block lg:mt-0 mr-4">
             Contact
             </a>
 
@@ -53,6 +72,9 @@ export default () => {
                 Sign up
               </a>
             */}
+          <a href="/checkout" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
+            {cartLen === null ? 'Checkout' : `Checkout (${cartLen})`}
+          </a>
         </div>
       </div>
     </nav>

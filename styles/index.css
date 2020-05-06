@@ -19,6 +19,12 @@ select {
   color: white;
 }
 
+
+.add-to-cart:disabled,
+.add-to-cart[disabled] {
+  background: #667;
+}
+
 path {
   fill: black;
 }
@@ -45,7 +51,12 @@ path {
   .add-to-cart {
     background: white;
     color: black;
-  }  
+  }
+  
+  .add-to-cart:disabled,
+.add-to-cart[disabled] {
+  background: #ccc;
+}
 
   path {
     fill: white;
