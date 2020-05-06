@@ -10,6 +10,10 @@
   border-color: white;
 }
 
+select {
+  background: #eee;
+}
+
 .add-to-cart {
   background: #222;
   color: white;
@@ -32,6 +36,10 @@ path {
   #banner-alert {
     background: #333;
     border-color: #222;
+  }
+
+  select {
+    background: #444;
   }
 
   .add-to-cart {

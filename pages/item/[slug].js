@@ -39,16 +39,23 @@ const loadingPage = (
 export default function ItemPage() {
   const [item, setItem] = useState(null)
   const [isLoading, setLoading] = useState(true)
+  const [variantOptions, updateVariant] = useState({})
   useEffect(() => {
     const firebase = require('../../firebase/clientApp')
     const pathLevels = window.location.pathname.split('/')
     const slug = pathLevels[pathLevels.length - 1]
     async function asyncBoi() {
       try {
-        const queryResults = await firebase.firestore().collection('items').where('slug', '==', slug).get()
-        //queryResults.forEach(item => console.log(item, item.data()))
-        const resultingItem = queryResults.docs[0].data()
-        setItem(resultingItem)
+        const itemResult = await firebase.firestore().collection('items').where('slug', '==', slug).get()
+        const resultingItem = itemResult.docs[0]
+        const variantResults = await firebase.firestore().collection(`/items/${resultingItem.id}/variants`).orderBy('sku').get()
+        const foundItem = resultingItem.data()
+        foundItem.variants = []
+        variantResults.forEach(n => foundItem.variants.push(n.data()))
+        const someVariant = { ...foundItem.variants[0] }
+        delete someVariant.sku
+        updateVariant(someVariant)
+        setItem(foundItem)
       } catch (e) {
         console.error(e)
       } finally {
@@ -68,6 +75,8 @@ export default function ItemPage() {
     defaultImg,
     description,
     price,
+    variesBy,
+    variants
   } = item
   return (
     <>
@@ -91,7 +100,53 @@ export default function ItemPage() {
                     .format(price / 100)
                 }
               </h2>
-              <button className="add-to-cart border rounded py-2 w-full my-2">
+              {
+                Object.keys(variesBy).sort((v1, v2) => {
+                  if (v1 < v2) { return -1 }
+                  if (v1 > v2) { return 1; }
+                  return 0
+                }).map(labelTitle => {
+                  const variantKey = variesBy[labelTitle]
+                  return (
+                    <div class="inline-block" key={variantKey}>
+                      <label className="mr-2 my-2" htmlFor={variantKey}>
+                        {labelTitle}
+                      </label>
+                      <select value={variantOptions[variantKey]} onChange={e => {
+                        const newValue = e.target.value
+                        updateVariant(prevVariant => {
+                          const newVariant = { ...prevVariant }
+                          newVariant[variantKey] = newValue
+                          return newVariant
+                        })
+                      }} className="mr-2 my-2" id={variantKey}>
+                        {
+                          variants.map(v => {
+                            const variantAttr = v[variantKey]
+                            return (
+                              <option key={variantAttr} value={variantAttr}>
+                                {variantAttr}
+                              </option>
+                            )
+                          })
+                        }
+                      </select>
+                    </div>
+                  )
+                })
+              }
+              <button
+                disabled={
+                  !(variants.some(v => {
+                    return Object.keys(variantOptions).every(k => v[k] === variantOptions[k])
+                  }))
+                }
+                className="add-to-cart border rounded py-2 w-full my-2"
+                onClick={() => {
+                  alert(variants.find(v => {
+                    return Object.keys(variantOptions).every(k => v[k] === variantOptions[k])
+                  }).sku)
+                }}>
                 Add to Cart
               </button>
               <p className="text-justify text-base">
