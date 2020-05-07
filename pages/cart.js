@@ -25,6 +25,8 @@ export default function CartPage() {
       <Layout>
         <Head>
           <title>Your Cart - MEZCLA</title>
+          <script src="https://js.stripe.com/v3/"></script>
+          <script src="/assets/checkout.js"></script>
         </Head>
         <div className="px-6">
           <h1 className="tracking-tight font-bold text-5xl text-center">
@@ -110,9 +112,9 @@ export default function CartPage() {
                         }))
                           .format(subtotal / 100)}
                       </span>
-                      <a href="/checkout" className="primary-btn block text-center border text-base w-full py-2 my-1">
+                      <button id="pay-now-btn" className="primary-btn block text-center border text-base w-full py-2 my-1">
                         Checkout
-                      </a>
+                      </button>
                     </div>
                   </>
                 ))
