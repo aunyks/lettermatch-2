@@ -29,6 +29,16 @@ select {
   border-color: black;
 }
 
+.primary-btn {
+  background: linear-gradient(45deg, #f0f, #00f);
+  color: white;
+  border-width: 0;
+}
+
+.bold-border-btn {
+  border-color: black;
+}
+
 path {
   fill: black;
 }
@@ -46,6 +56,10 @@ path {
   #banner-alert {
     background: #333;
     border-color: #222;
+  }
+
+  .bold-border-btn {
+    border-color: white;
   }
 
   select {

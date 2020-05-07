@@ -63,9 +63,9 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <a href="/shop" className="inline-block text-xl px-4 py-2 leading-none border rounded mt-5">
+          <a href="/shop" className="bold-border-btn inline-block text-xl px-4 py-2 leading-none border rounded mt-5">
             See more
-        </a>
+          </a>
         </>
       )
     }
@@ -95,9 +95,9 @@ export default function HomePage() {
             Find clothing, posters and accessories with mixed reality experiences
           </h2>
           <div className="mt-3">
-            <a href="/shop" className="inline-block text-2xl lg:text-3xl px-4 py-2 leading-none border rounded mt-4 lg:mt-0">
+            <a href="/shop" className="primary-btn inline-block text-xl lg:text-2xl px-4 py-2 leading-none border rounded mt-0">
               Shop now
-              </a>
+            </a>
           </div>
         </section>
         <section className="p-6 h-1/2 text-center">
