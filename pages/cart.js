@@ -31,7 +31,7 @@ export default function CartPage() {
             {
               isLoading ?
                 'Loading...' :
-                (cart.length > 0 ? 'Checkout' : 'Cart Empty')
+                (cart.length > 0 ? 'Your Cart' : 'Cart Empty')
             }
           </h1>
           <div className="lg:flex lg:flex-row">

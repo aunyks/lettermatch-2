@@ -1,7 +1,7 @@
 export default function StateSelect({ ...props }) {
   return (
     <select {...props}>
-      <option disabled="">State</option>
+      <option disabled="" value="XX">State</option>
       <option data-alternate-values="[&quot;Alabama&quot;]" value="AL">Alabama</option>
       <option data-alternate-values="[&quot;Alaska&quot;]" value="AK">Alaska</option>
       <option data-alternate-values="[&quot;American Samoa&quot;]" value="AS">American Samoa</option>

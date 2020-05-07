@@ -52,11 +52,11 @@ export default function ShippingPage() {
       setError('* Please provide a U.S. city')
       return
     }
-    if (state === null) {
+    if (state === null || state === 'XX') {
       setError('* Please select a state')
       return
     }
-    if (zip.length <= 0 || zip.length > 5) {
+    if (zip.length !== 5 || isNaN(zip)) {
       setError('* Please provide a valid ZIP code')
       return
     }
@@ -77,12 +77,12 @@ export default function ShippingPage() {
     <>
       <Layout>
         <Head>
-          <title>Checkout - MEZCLA</title>
+          <title>Shipping - MEZCLA</title>
         </Head>
         <div className="px-6 flex flex-col">
           <main className="mb-6 mx-auto lg:mb-12 lg:w-2/5">
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
-              {cartEmpty ? 'Cart Empty' : 'Checkout'}
+              {cartEmpty ? 'Cart Empty' : 'Shipping'}
             </h1>
             {!cartEmpty && (
               <>

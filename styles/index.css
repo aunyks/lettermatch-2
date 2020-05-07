@@ -66,6 +66,10 @@ path {
     border-color: white;
   }
 
+  input[type="text"],input[type="email"] {
+    color: black
+  }
+
   path {
     fill: white;
   }
