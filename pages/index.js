@@ -76,6 +76,7 @@ export default function HomePage() {
       <Layout>
         <Head>
           <title>MEZCLA - Beyond reality</title>
+          <meta name="google-site-verification" content="MyNil_49wI2nJ3zc8VzY5bS4-fz8vVOkTVrBn1oexIA" />
         </Head>
         {/* 
         <video

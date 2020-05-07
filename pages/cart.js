@@ -104,7 +104,8 @@ export default function CartPage() {
                   <>
                     <hr className="lg:hidden" />
                     <div className="px-0 py-3 lg:px-6 lg:py-0">
-                      <h3 className="text-3xl font-bold">Subtotal</h3>
+                      <span id="payment-error" className="text-red-600"></span>
+                      <h3 className="text-3xl font-bold">Total</h3>
                       <span className="text-2xl block">
                         {(new Intl.NumberFormat('en-US', {
                           style: 'currency',

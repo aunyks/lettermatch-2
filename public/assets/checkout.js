@@ -25,7 +25,7 @@ window.onload = () => {
   }
   document.getElementById('pay-now-btn')
     .addEventListener('click', async () => {
-      const stripe = Stripe('pk_test_PGFssoIgna4ODG3QY5hso0An00byCaHxXy')
+      const stripe = Stripe('pk_live_0MOuU5KL9DqGCkPpdX9vYl2o00NU6r1U5T')
       const cartFromStorage = window.localStorage.getItem('cart')
       try {
         if (cartFromStorage !== null) {
