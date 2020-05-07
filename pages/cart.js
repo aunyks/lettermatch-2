@@ -17,6 +17,9 @@ export default function CartPage() {
     }
     setLoading(false)
   }, [])
+  const subtotal = cart.reduce((sum, itemA) => {
+    return sum + itemA.price * itemA.qty
+  }, 0)
   return (
     <>
       <Layout>
@@ -32,7 +35,7 @@ export default function CartPage() {
             }
           </h1>
           <div className="lg:flex lg:flex-row">
-            <section className="lg:overflow-y-scroll lg:w-3/4 flex flex-col">
+            <section className="lg:h-full lg:overflow-y-scroll lg:w-3/4 flex flex-col">
               {
                 cart
                   .sort((itemA, itemB) => {
@@ -69,21 +72,21 @@ export default function CartPage() {
                                 tempCart[itemIdx].qty = tempCart[itemIdx].qty + 1
                                 window.localStorage.setItem('cart', JSON.stringify(tempCart))
                                 updateCart(tempCart)
-                              }} className="border-black border rounded-l text-xl px-6 font-bold text-center">+</button>
+                              }} className="cart-qty border rounded-l text-lg px-4 font-bold text-center">+</button>
                               <button onClick={() => {
                                 const itemIdx = cart.findIndex(item => item.sku === sku)
                                 const tempCart = [...cart]
                                 tempCart[itemIdx].qty = tempCart[itemIdx].qty - 1
                                 window.localStorage.setItem('cart', JSON.stringify(tempCart))
                                 updateCart(tempCart)
-                              }} className="border-black border rounded-r text-xl px-6 font-bold text-center">-</button>
+                              }} className="cart-qty border rounded-r text-lg px-4 font-bold text-center">-</button>
                               <br />
                               <br />
                               <button onClick={() => {
                                 const filteredCart = cart.filter(item => item.sku !== sku)
                                 window.localStorage.setItem('cart', JSON.stringify(filteredCart))
                                 updateCart(filteredCart)
-                              }} className="border-black border rounded px-2 py-1 font-bold text-center">Delete</button>
+                              }} className="text-xs cart-qty border rounded px-2 py-1 font-bold text-center">Delete</button>
                             </div>
                           </div>
                         </div>
@@ -93,7 +96,27 @@ export default function CartPage() {
               }
             </section>
             <section className="lg:w-1/4">
-              f
+              {
+                !isLoading &&
+                (cart.length > 0 && (
+                  <>
+                    <hr className="lg:hidden" />
+                    <div className="px-0 py-3 lg:px-6 lg:py-0">
+                      <h3 className="text-3xl font-bold">Subtotal</h3>
+                      <span className="text-2xl block">
+                        {(new Intl.NumberFormat('en-US', {
+                          style: 'currency',
+                          currency: 'USD',
+                        }))
+                          .format(subtotal / 100)}
+                      </span>
+                      <a href="/checkout/shipping" className="primary-btn block text-center border text-base w-full py-2 my-1">
+                        Checkout
+                    </a>
+                    </div>
+                  </>
+                ))
+              }
             </section>
           </div>
         </div>

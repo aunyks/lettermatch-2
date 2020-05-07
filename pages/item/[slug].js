@@ -154,7 +154,7 @@ export default function ItemPage() {
                     return Object.keys(variantOptions).every(k => v[k] === variantOptions[k])
                   }))
                 }
-                className="add-to-cart border rounded py-2 w-full my-2"
+                className="primary-btn add-to-cart border rounded py-2 w-full my-2"
                 onClick={() => {
                   const chosenVariant = variants.find(v => {
                     return Object.keys(variantOptions).every(k => v[k] === variantOptions[k])

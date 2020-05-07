@@ -25,6 +25,10 @@ select {
   background: #667;
 }
 
+.cart-qty {
+  border-color: black;
+}
+
 path {
   fill: black;
 }
@@ -54,9 +58,13 @@ path {
   }
   
   .add-to-cart:disabled,
-.add-to-cart[disabled] {
-  background: #ccc;
-}
+  .add-to-cart[disabled] {
+    background: #ccc;
+  }
+
+  .cart-qty {
+    border-color: white;
+  }
 
   path {
     fill: white;
