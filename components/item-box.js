@@ -10,8 +10,8 @@ export default function ItemBox({
   return (
     <a href={`/item/${slug}`}>
       <img className="mb-2" src={image} />
-      <h2 className="text-2xl font-bold">{name}</h2>
-      <h3 className="text-xl font-bold">
+      <h2 className="text-2xl font-bold text-left">{name}</h2>
+      <h3 className="text-xl font-bold text-left">
         {
           (new Intl.NumberFormat('en-US', {
             style: 'currency',

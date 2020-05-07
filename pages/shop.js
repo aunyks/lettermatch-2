@@ -44,7 +44,9 @@ export default function ShopPage() {
     const firebase = require('../firebase/clientApp')
     async function asyncBoi() {
       try {
-        const items = await firebase.firestore().collection('items').orderBy('additionDate').get()
+        const items = await firebase.firestore().collection('items')
+          .orderBy('additionDate')
+          .get()
         let tempItemsList = []
         items.forEach(n => {
           tempItemsList.push({ ...n.data(), id: n.id })

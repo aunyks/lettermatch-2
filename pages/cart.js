@@ -110,9 +110,9 @@ export default function CartPage() {
                         }))
                           .format(subtotal / 100)}
                       </span>
-                      <a href="/checkout/shipping" className="primary-btn block text-center border text-base w-full py-2 my-1">
+                      <a href="/checkout" className="primary-btn block text-center border text-base w-full py-2 my-1">
                         Checkout
-                    </a>
+                      </a>
                     </div>
                   </>
                 ))

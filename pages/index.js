@@ -1,22 +1,75 @@
-// import { useEffect } from 'react'
-// import { useUser } from '../context/userContext'
-// import firebase from '../firebase/clientApp'
+import {
+  useState,
+  useEffect
+} from 'react'
 import Head from 'next/head'
 import Container from '../components/container'
 import Layout from '../components/layout'
+import ItemBox from '../components/item-box'
 
 export default function HomePage() {
-  /*
-  const { loadingUser, user } = useUser()
+  const [isLoading, setLoading] = useState(true)
+  const [featuredItems, setFeaturedItems] = useState(null)
   useEffect(() => {
-    if (!loadingUser) {
-      // You know that the user is loaded: either logged in or out!
-      console.log(user)
+    const firebase = require('../firebase/clientApp')
+    async function fireBoi() {
+      try {
+        const featuredResult = await firebase.firestore().collection('items')
+          .where('featured', '==', true)
+          .limit(3)
+          .get()
+        const tentativeFeaturedItems = []
+        featuredResult.forEach(item => tentativeFeaturedItems.push({ ...item.data(), item: item.id }))
+        setFeaturedItems(tentativeFeaturedItems)
+      } catch (e) {
+        console.error(e)
+      } finally {
+        setLoading(false)
+      }
     }
-    // You also have your firebase app initialized
-    console.log(firebase)
-  }, [loadingUser, user])
-  */
+    fireBoi()
+  }, [])
+  let featuredItemsComponent = null
+  if (isLoading) {
+    featuredItemsComponent = (
+      <>
+        <h3 className="text-2xl font-bold mb-5">Featured Items</h3>
+        <p>Loading...</p>
+      </>
+    )
+  } else {
+    if (featuredItems === null) {
+      featuredItemsComponent = (
+        <>
+          <h3 className="text-2xl font-bold mb-5">Featured Items</h3>
+          <p>An error occurred</p>
+        </>
+      )
+    } else {
+      featuredItemsComponent = (
+        <>
+          <h3 className="text-3xl font-bold text-center">Featured Items</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-3">
+            {featuredItems.map(({ id, slug, name, price, description, defaultImg }) => (
+              <div key={id} className="my-2 lg:px-2">
+                <ItemBox
+                  id={id}
+                  slug={slug}
+                  name={name}
+                  price={price}
+                  description={description}
+                  image={defaultImg}
+                />
+              </div>
+            ))}
+          </div>
+          <a href="/shop" className="inline-block text-xl px-4 py-2 leading-none border rounded mt-5">
+            See more
+        </a>
+        </>
+      )
+    }
+  }
 
   return (
     <>
@@ -48,15 +101,7 @@ export default function HomePage() {
           </div>
         </section>
         <section className="p-6 h-1/2 text-center">
-          <h3 className="text-2xl font-bold mb-5">FEATURED ITEMS</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-3">
-            <span>sumn</span>
-            <span>sumn</span>
-            <span>sumn</span>
-          </div>
-          <a href="/shop" className="inline-block text-xl px-4 py-2 leading-none border rounded mt-5">
-            See more
-          </a>
+          {featuredItemsComponent}
         </section>
       </Layout>
     </>

@@ -50,10 +50,13 @@ export default function ItemPage() {
     setStorage(window.localStorage)
     async function asyncBoi() {
       try {
-        const itemResult = await firebase.firestore().collection('items').where('slug', '==', slug).get()
+        const itemResult = await firebase.firestore().collection('items')
+          .where('slug', '==', slug)
+          .get()
         const resultingItem = itemResult.docs[0]
         const variantResults = await firebase.firestore().collection(`/items/${resultingItem.id}/variants`).orderBy('sku').get()
         const foundItem = resultingItem.data()
+        foundItem.id = resultingItem.id
         foundItem.variants = []
         variantResults.forEach(n => foundItem.variants.push(n.data()))
         const someVariant = { ...foundItem.variants[0] }
@@ -62,7 +65,10 @@ export default function ItemPage() {
         setItem(foundItem)
 
         // just random items for now
-        const fbRelatedItems = await firebase.firestore().collection('items').orderBy('additionDate').get()
+        const fbRelatedItems = await firebase.firestore().collection('items')
+          .limit(3)
+          .orderBy('additionDate')
+          .get()
         let tempRelatedItemsList = []
         fbRelatedItems.forEach(n => {
           tempRelatedItemsList.push({ ...n.data(), id: n.id })
@@ -91,6 +97,7 @@ export default function ItemPage() {
     variesBy,
     variants
   } = item
+  const itemId = item.id
   return (
     <>
       <Layout>
@@ -164,6 +171,7 @@ export default function ItemPage() {
                     let currentCart = browserStorage.getItem('cart')
                     if (currentCart === null) {
                       currentCart = [{
+                        id: itemId,
                         slug,
                         name,
                         price,
@@ -182,6 +190,7 @@ export default function ItemPage() {
                       } else {
                         // add it to the cart brand new
                         currentCart = [...trueCart, {
+                          id: itemId,
                           slug,
                           name,
                           price,
@@ -213,7 +222,7 @@ export default function ItemPage() {
                 relatedItems
                   .filter(({ slug }) => slug !== item.slug)
                   .map(({ id, slug, name, price, description, defaultImg }) =>
-                    <div className="py-3" key={id}>
+                    <div className="my-2 lg:mr-2" key={id}>
                       <ItemBox
                         id={id}
                         slug={slug}
