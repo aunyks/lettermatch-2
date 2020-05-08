@@ -7,10 +7,11 @@ export default function Footer() {
     <footer id="footer" className="border-t border-accent-2">
       <Container>
         <div className="py-4 flex flex-col lg:flex-row items-center">
-          <h3 className="text-base tracking-tighter leading-tight text-center lg:text-left mb-5 lg:mb-0 lg:pr-4 lg:w-1/2">
+          <h3 className="order-0 text-base tracking-tighter leading-tight text-center lg:text-left lg:pr-4 lg:w-1/3">
             BEYOND REALITY.
           </h3>
-          <div className="flex flex-row-reverse lg:pl-4 lg:w-1/2">
+          <span className="text-xs lg:text-base order-2 lg:order-1 lg:w-1/3 text-center">&copy; 2020 Sankofa Systems</span>
+          <div className="order-1 lg:order-2 flex flex-row-reverse lg:pl-4 lg:w-1/3">
             <a
               target="_blank"
               href="https://instagram.com/mezclaxyz"
