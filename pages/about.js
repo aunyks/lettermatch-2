@@ -9,12 +9,15 @@ export default function AboutPage() {
           <title>About - MEZCLA</title>
         </Head>
         <div className="p-6 flex flex-col">
-          <h1 className="tracking-tight font-bold text-5xl lg:text-center">
+          <h1 className="tracking-tight font-bold text-5xl text-center">
             BEYOND REALITY.
           </h1>
-          <div className="my-3 lg:my-5 lg:px-64 lg:text-justify">
+          <div className="my-3 lg:my-5 lg:px-64 text-justify">
             <p className="my-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat eleifend risus, vel mollis mi condimentum quis. Nam tristique tortor nec dolor tincidunt, vel pellentesque tellus dignissim. Proin magna magna, volutpat ac ornare elementum, convallis ac metus. Integer tristique aliquam massa vel euismod. Integer congue porta iaculis. Donec cursus felis nulla, eget ornare massa condimentum a. Nam maximus sapien a elementum vehicula. Cras rutrum nisi metus. Mauris id ligula in arcu maximus vehicula placerat in est.
+              MEZCLA is a brand that exists beyond reality. Born out of frustration with the limitations of the physical world, it expands the boundaries of creative expression by fusing the physical and virtual worlds. Mixing realities is at the core of what we do, and each of our products helps you transcend these two worlds.
+            </p>
+            <p>
+              Join the movement. Expand your reality.
             </p>
           </div>
         </div>
