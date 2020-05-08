@@ -15,7 +15,7 @@ export default () => {
     }
   }, [])
   return (
-    <nav className="flex items-center justify-between flex-wrap p-6">
+    <nav id="navbar" className="flex items-center justify-between flex-wrap p-6">
       <div className="flex items-center flex-shrink-0 mr-6">
         <a href="/" className="font-semibold text-xl tracking-tight">MEZCLA</a>
       </div>

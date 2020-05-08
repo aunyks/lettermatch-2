@@ -10,6 +10,11 @@
   border-color: white;
 }
 
+#navbar {
+  border-bottom-width:1px;
+  border-bottom-color: black;
+}
+
 select {
   background: #eee;
 }
@@ -51,6 +56,10 @@ path {
   #banner-alert {
     background: #333;
     border-color: #222;
+  }
+
+  #navbar {
+    border-bottom-color: white;
   }
 
   .bold-border-btn {
