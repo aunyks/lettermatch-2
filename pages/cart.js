@@ -28,7 +28,7 @@ export default function CartPage() {
           <script src="https://js.stripe.com/v3/"></script>
           <script src="/assets/js/checkout.js"></script>
         </Head>
-        <div className="px-6">
+        <div className="px-6 py-6 lg:py-0">
           <h1 className="tracking-tight font-bold text-5xl text-center">
             {
               isLoading ?
