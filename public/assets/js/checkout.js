@@ -41,7 +41,7 @@ window.onload = () => {
           }
           */
           const stripeResult = await stripe.redirectToCheckout({
-            items: deserializedCart.map(item => ({ sku: item.sku, quantity: item.qty })),
+            items: [...deserializedCart.filter(({ qty }) => qty > 0).map(item => ({ sku: item.sku, quantity: item.qty })), { sku: 'sku_HFChokUB3iPkcc', quantity: 1 }],
             clientReferenceId: orderId,
             shippingAddressCollection: {
               allowedCountries: ['US'],

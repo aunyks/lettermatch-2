@@ -105,14 +105,32 @@ export default function CartPage() {
                     <hr className="lg:hidden" />
                     <div className="px-0 py-3 lg:px-6 lg:py-0">
                       <span id="payment-error" className="text-red-600"></span>
-                      <h3 className="text-3xl font-bold">Total</h3>
-                      <span className="text-2xl block">
-                        {(new Intl.NumberFormat('en-US', {
+                      <div className="text-2xl flex flex-row justify-between">
+                        <h2 className="font-bold">Subtotal</h2>
+                        <span>
+                          {(new Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                          }))
+                            .format(subtotal / 100)}
+                        </span>
+                      </div>
+                      <div className="text-xs flex flex-row justify-between">
+                        <h2 className="font-bold">Shipping</h2>
+                        <span>{(new Intl.NumberFormat('en-US', {
                           style: 'currency',
                           currency: 'USD',
                         }))
-                          .format(subtotal / 100)}
-                      </span>
+                          .format(5)}</span>
+                      </div>
+                      <div className="text-2xl flex flex-row justify-between">
+                        <h2 className="font-bold">Total</h2>
+                        <span>{(new Intl.NumberFormat('en-US', {
+                          style: 'currency',
+                          currency: 'USD',
+                        }))
+                          .format((subtotal + 500) / 100)}</span>
+                      </div>
                       <button id="pay-now-btn" className="primary-btn block text-center border text-base w-full py-2 my-1">
                         Checkout
                       </button>
