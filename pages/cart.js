@@ -7,6 +7,7 @@ import Container from '../components/container'
 import Layout from '../components/layout'
 
 export default function CartPage() {
+  const flatShippingRate = 10
   const [isLoading, setLoading] = useState(true)
   const [cart, updateCart] = useState([])
   useEffect(() => {
@@ -121,7 +122,7 @@ export default function CartPage() {
                           style: 'currency',
                           currency: 'USD',
                         }))
-                          .format(5)}</span>
+                          .format(flatShippingRate)}</span>
                       </div>
                       <div className="text-2xl flex flex-row justify-between">
                         <h2 className="font-bold">Total</h2>
@@ -129,7 +130,7 @@ export default function CartPage() {
                           style: 'currency',
                           currency: 'USD',
                         }))
-                          .format((subtotal + 500) / 100)}</span>
+                          .format((subtotal + (flatShippingRate * 100)) / 100)}</span>
                       </div>
                       <button id="pay-now-btn" className="primary-btn block text-center border text-base w-full py-2 my-1">
                         Checkout
