@@ -32,12 +32,14 @@ window.onload = () => {
           const deserializedCart = JSON.parse(cartFromStorage)
           // create order at api
           const orderId = `${parseInt(Math.random() * (10 ** 15))}`
+          /*
           const apiResponse = await post('/api/order', {
             id: orderId,
           })
           if (!apiResponse) {
             throw 'A network error occurred!'
           }
+          */
           const stripeResult = await stripe.redirectToCheckout({
             items: deserializedCart.map(item => ({ sku: item.sku, quantity: item.qty })),
             clientReferenceId: orderId,
@@ -45,7 +47,7 @@ window.onload = () => {
               allowedCountries: ['US'],
             },
             successUrl: window.location.protocol + '//mezcla.xyz/thanks',
-            cancelUrl: window.location.protocol + '//mezcla.xyz/checkout/pay',
+            cancelUrl: window.location.protocol + '//mezcla.xyz/cart',
           })
           if (stripeResult.error) {
             throw stripeResult.error.message

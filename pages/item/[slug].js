@@ -73,7 +73,7 @@ export default function ItemPage() {
         fbRelatedItems.forEach(n => {
           tempRelatedItemsList.push({ ...n.data(), id: n.id })
         })
-        setRelatedItems(tempRelatedItemsList)
+        setRelatedItems(tempRelatedItemsList.filter(({ slug }) => slug !== foundItem.slug))
       } catch (e) {
         console.error(e)
       } finally {
@@ -88,16 +88,24 @@ export default function ItemPage() {
   if (isLoading) {
     return loadingItemPage
   }
+  const variantChoiceCriteria = v => {
+    // ignore price keys, because they'll almost always be different from
+    // the default item price
+    return Object.keys(variantOptions).every(k => k === 'price' || k === 'salePrice' || v[k] === variantOptions[k])
+  }
+  const variantExists = item.variants.some(variantChoiceCriteria)
+  const chosenVariant = item.variants.find(variantChoiceCriteria)
   const {
     slug,
     name,
     defaultImg,
+    defaultPrice,
     description,
-    price,
     variesBy,
     variants
   } = item
   const itemId = item.id
+  const price = variantExists ? chosenVariant.price : defaultPrice
   return (
     <>
       <Layout>
@@ -109,7 +117,7 @@ export default function ItemPage() {
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
               {name}
             </h1>
-            <img className="my-5 lg:h-2/4" src={defaultImg} />
+            <img className="mx-auto my-5 lg:h-2/4" src={defaultImg} />
             <div>
               <h2 className="font-bold text-2xl">
                 {
@@ -156,16 +164,9 @@ export default function ItemPage() {
                 })
               }
               <button
-                disabled={
-                  !(variants.some(v => {
-                    return Object.keys(variantOptions).every(k => v[k] === variantOptions[k])
-                  }))
-                }
+                disabled={!variantExists}
                 className="primary-btn add-to-cart border rounded py-2 w-full my-2"
                 onClick={() => {
-                  const chosenVariant = variants.find(v => {
-                    return Object.keys(variantOptions).every(k => v[k] === variantOptions[k])
-                  })
                   const sku = chosenVariant.sku
                   if (browserStorage !== null) {
                     let currentCart = browserStorage.getItem('cart')
@@ -215,19 +216,18 @@ export default function ItemPage() {
           </main>
           <section className="mx-auto lg:w-3/5">
             <h3 className="font-bold text-3xl">
-              Related Items
+              {(relatedItems !== null && relatedItems.length > 0) && 'Related Items'}
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-3">
               {
                 relatedItems
-                  .filter(({ slug }) => slug !== item.slug)
-                  .map(({ id, slug, name, price, description, defaultImg }) =>
+                  .map(({ id, slug, name, defaultPrice, description, defaultImg }) =>
                     <div className="my-2 lg:mr-2" key={id}>
                       <ItemBox
                         id={id}
                         slug={slug}
                         name={name}
-                        price={price}
+                        price={defaultPrice}
                         description={description}
                         image={defaultImg}
                         noDescription

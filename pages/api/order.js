@@ -5,6 +5,7 @@ const client = require('twilio')(accountSid, authToken)
 export default async (req, res) => {
   try {
     if (req.method === 'POST') {
+      /*
       const { id } = req.body
       await client.messages
         .create({
@@ -12,6 +13,7 @@ export default async (req, res) => {
           from: '+14048464726',
           to: '+16786316274'
         })
+        */
       res.statusCode = 200
       res.setHeader('Content-Type', 'application/json')
       res.json({})

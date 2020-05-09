@@ -80,14 +80,14 @@ export default function ShopPage() {
           </h1>
           <div className="my-5 mx-auto grid grid-cols-1 lg:grid-cols-3">
             {
-              itemsList.map(({ id, slug, name, price, description, defaultImg }) => {
+              itemsList.map(({ id, slug, name, defaultPrice, description, defaultImg }) => {
                 return (
                   <div className="py-3 lg:p-3" key={id}>
                     <ItemBox
                       id={id}
                       slug={slug}
                       name={name}
-                      price={price}
+                      price={defaultPrice}
                       description={description}
                       image={defaultImg}
                     />

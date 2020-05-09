@@ -33,7 +33,7 @@ export default function HomePage() {
   if (isLoading) {
     featuredItemsComponent = (
       <>
-        <h3 className="text-2xl font-bold mb-5">Featured Items</h3>
+        <h3 className="text-3xl font-bold mb-5">Featured Items</h3>
         <p>Loading...</p>
       </>
     )
@@ -41,7 +41,7 @@ export default function HomePage() {
     if (featuredItems === null) {
       featuredItemsComponent = (
         <>
-          <h3 className="text-2xl font-bold mb-5">Featured Items</h3>
+          <h3 className="text-3xl font-bold mb-5">Featured Items</h3>
           <p>An error occurred</p>
         </>
       )
@@ -50,13 +50,13 @@ export default function HomePage() {
         <>
           <h3 className="text-3xl font-bold text-center">Featured Items</h3>
           <div className="grid grid-cols-1 lg:grid-cols-3">
-            {featuredItems.map(({ id, slug, name, price, description, defaultImg }) => (
+            {featuredItems.map(({ id, slug, name, defaultPrice, description, defaultImg }) => (
               <div key={id} className="my-2 lg:px-2">
                 <ItemBox
                   id={id}
                   slug={slug}
                   name={name}
-                  price={price}
+                  price={defaultPrice}
                   description={description}
                   image={defaultImg}
                 />

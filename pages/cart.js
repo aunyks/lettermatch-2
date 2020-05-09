@@ -26,7 +26,7 @@ export default function CartPage() {
         <Head>
           <title>Your Cart - MEZCLA</title>
           <script src="https://js.stripe.com/v3/"></script>
-          <script src="/assets/checkout.js"></script>
+          <script src="/assets/js/checkout.js"></script>
         </Head>
         <div className="px-6">
           <h1 className="tracking-tight font-bold text-5xl text-center">
