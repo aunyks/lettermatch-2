@@ -11,8 +11,7 @@
 }
 
 #navbar {
-  border-bottom-width:1px;
-  border-bottom-color: black;
+  box-shadow: 0 4px 2px -2px lightgrey;
 }
 
 select {
