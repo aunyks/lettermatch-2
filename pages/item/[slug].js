@@ -3,91 +3,21 @@ import {
   useEffect
 } from 'react'
 import Head from 'next/head'
+import Error from 'next/error'
 import Container from '../../components/container'
 import Layout from '../../components/layout'
 import ItemBox from '../../components/item-box'
+import firebase from '../../firebase/clientApp'
 
-const unknownItemPage = (
-  <>
-    <Layout>
-      <Head>
-        <title>Unknown item - MEZCLA</title>
-      </Head>
-      <div className="px-6 flex flex-col">
-        <h1 className="tracking-tight font-bold text-5xl text-center">
-          Unknown item
-          </h1>
-      </div>
-    </Layout>
-  </>
-)
-
-const loadingItemPage = (
-  <>
-    <Layout>
-      <Head>
-        <title>Loading Item</title>
-      </Head>
-      <div className="px-6 flex flex-col">
-        <h1 className="tracking-tight font-bold text-5xl text-center">
-          Loading...
-        </h1>
-      </div>
-    </Layout>
-  </>
-)
-
-export default function ItemPage() {
-  const [item, setItem] = useState(null)
-  const [isLoading, setLoading] = useState(true)
-  const [variantOptions, updateVariant] = useState({})
+const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) => {
+  if (errorCode) {
+    return <Error statusCode={errorCode} />
+  }
+  const [variantOptions, updateVariant] = useState(initialVariant)
   const [browserStorage, setStorage] = useState(null)
-  const [relatedItems, setRelatedItems] = useState(null)
   useEffect(() => {
-    const firebase = require('../../firebase/clientApp')
-    const pathLevels = window.location.pathname.split('/')
-    const slug = pathLevels[pathLevels.length - 1]
     setStorage(window.localStorage)
-    async function asyncBoi() {
-      try {
-        const itemResult = await firebase.firestore().collection('items')
-          .where('slug', '==', slug)
-          .get()
-        const resultingItem = itemResult.docs[0]
-        const variantResults = await firebase.firestore().collection(`/items/${resultingItem.id}/variants`).orderBy('sku').get()
-        const foundItem = resultingItem.data()
-        foundItem.id = resultingItem.id
-        foundItem.variants = []
-        variantResults.forEach(n => foundItem.variants.push(n.data()))
-        const someVariant = { ...foundItem.variants[0] }
-        delete someVariant.sku
-        updateVariant(someVariant)
-        setItem(foundItem)
-
-        // just random items for now
-        const fbRelatedItems = await firebase.firestore().collection('items')
-          .limit(3)
-          .orderBy('additionDate')
-          .get()
-        let tempRelatedItemsList = []
-        fbRelatedItems.forEach(n => {
-          tempRelatedItemsList.push({ ...n.data(), id: n.id })
-        })
-        setRelatedItems(tempRelatedItemsList.filter(({ slug }) => slug !== foundItem.slug))
-      } catch (e) {
-        console.error(e)
-      } finally {
-        setLoading(false)
-      }
-    }
-    asyncBoi()
   }, [])
-  if (!isLoading && item === null) {
-    return unknownItemPage
-  }
-  if (isLoading) {
-    return loadingItemPage
-  }
   const variantChoiceCriteria = v => {
     // ignore price keys, because they'll almost always be different from
     // the default item price
@@ -111,6 +41,14 @@ export default function ItemPage() {
       <Layout>
         <Head>
           <title>{name} - MEZCLA</title>
+          <meta key="desc" name="description" content={description} />
+          <meta key="tw-img-src" name="twitter:image" content={defaultImg} />
+          <meta key="tw-title" name="twitter:title" content={name} />
+          <meta key="tw-desc" name="twitter:description" content={description} />
+          <meta key="og-img" property="og:image" content={defaultImg} />
+          <meta key="og-title" property="og:title" content={name} />
+          <meta key="og-url" property="og:url" content={`https://mezcla.xyz/item/${itemSlug}`} />
+          <meta key="og-desc" property="og:description" content={description} />
         </Head>
         <div className="px-6 pb-12">
           <main className="mb-6 mx-auto lg:mb-12 lg:w-3/5">
@@ -242,3 +180,48 @@ export default function ItemPage() {
     </>
   )
 }
+
+export async function getServerSideProps({ params }) {
+  const { slug } = params
+  const itemResult = await firebase.firestore().collection('items')
+    .where('slug', '==', slug)
+    .get()
+  if (itemResult.docs.length === 0) {
+    return { props: { errorCode: 404 } }
+  }
+  const resultingItem = itemResult.docs[0]
+  const variantResults = await firebase.firestore().collection(`/items/${resultingItem.id}/variants`).orderBy('sku').get()
+  const item = resultingItem.data()
+  item.additionDate = {
+    seconds: item.additionDate.seconds,
+    nanoseconds: item.additionDate.nanoseconds
+  }
+  item.id = resultingItem.id
+  item.variants = []
+  variantResults.forEach(n => {
+    const thisVariant = n.data()
+    item.variants.push(thisVariant)
+  })
+  const someVariant = { ...item.variants[0] }
+  delete someVariant.sku
+
+  // just random items for now
+  const fbRelatedItems = await firebase.firestore().collection('items')
+    .limit(3)
+    .orderBy('additionDate')
+    .get()
+  let relatedItems = []
+  fbRelatedItems.forEach(relatedItem => {
+    const thisRelatedItem = { ...relatedItem.data(), id: relatedItem.id }
+    thisRelatedItem.additionDate = {
+      seconds: thisRelatedItem.additionDate.seconds,
+      nanoseconds: thisRelatedItem.additionDate.nanoseconds
+    }
+    if (thisRelatedItem.slug !== slug) {
+      relatedItems.push(thisRelatedItem)
+    }
+  })
+  return { props: { item, relatedItems, itemSlug: slug, initialVariant: someVariant, errorCode: false } }
+}
+
+export default ItemPage

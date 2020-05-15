@@ -3,76 +3,25 @@ import {
   useEffect
 } from 'react'
 import Head from 'next/head'
+import Error from 'next/error'
 import Container from '../components/container'
 import Layout from '../components/layout'
 import ItemBox from '../components/item-box'
+import firebase from '../firebase/clientApp'
 
-const unknownShopPage = (
-  <>
-    <Layout>
-      <Head>
-        <title>Uh oh! - MEZCLA</title>
-      </Head>
-      <div className="px-6 flex flex-col">
-        <h1 className="tracking-tight font-bold text-5xl text-center">
-          An unknown error occurred! Please try again later
-          </h1>
-      </div>
-    </Layout>
-  </>
-)
-
-const loadingShopPage = (
-  <>
-    <Layout>
-      <Head>
-        <title>Loading Items</title>
-      </Head>
-      <div className="px-6 flex flex-col">
-        <h1 className="tracking-tight font-bold text-5xl text-center">
-          Loading items...
-        </h1>
-      </div>
-    </Layout>
-  </>
-)
-
-export default function ShopPage() {
-  const [isLoading, setLoading] = useState(true)
-  const [itemsList, setItems] = useState(null)
-  useEffect(() => {
-    const firebase = require('../firebase/clientApp')
-    async function asyncBoi() {
-      try {
-        const items = await firebase.firestore().collection('items')
-          .orderBy('additionDate')
-          .get()
-        let tempItemsList = []
-        items.forEach(n => {
-          tempItemsList.push({ ...n.data(), id: n.id })
-        })
-        setItems(tempItemsList)
-      } catch (e) {
-        console.error(e)
-      } finally {
-        setLoading(false)
-      }
-    }
-    asyncBoi()
-  }, [])
-
-  if (isLoading) {
-    return loadingShopPage
+const ShopPage = ({ errorCode, itemsList }) => {
+  if (errorCode) {
+    return <Error statusCode={errorCode} />
   }
-  if (!isLoading && itemsList === null) {
-    return unknownShopPage
-  }
-  console.log(itemsList)
+  const pageTitle = `Shop - MEZCLA`
   return (
     <>
       <Layout>
         <Head>
-          <title>Shop - MEZCLA</title>
+          <title>{pageTitle}</title>
+          <meta key="tw-title" name="twitter:title" content={pageTitle} />
+          <meta key="og-title" property="og:title" content={pageTitle} />
+          <meta key="og-url" property="og:url" content="https://mezcla.xyz/shop" />
         </Head>
         <div className="px-6 flex flex-col">
           <h1 className="tracking-tight font-bold text-5xl text-center">
@@ -101,3 +50,24 @@ export default function ShopPage() {
     </>
   )
 }
+
+export async function getServerSideProps() {
+  const items = await firebase.firestore().collection('items')
+    .orderBy('additionDate')
+    .get()
+  if (items.docs.length === 0) {
+    return { props: { errorCode: 500 } }
+  }
+  let itemsList = []
+  items.forEach(item => {
+    const thisItem = { ...item.data(), item: item.id }
+    thisItem.additionDate = {
+      seconds: thisItem.additionDate.seconds,
+      nanoseconds: thisItem.additionDate.nanoseconds
+    }
+    itemsList.push(thisItem)
+  })
+  return { props: { itemsList, errorCode: false } }
+}
+
+export default ShopPage

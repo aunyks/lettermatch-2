@@ -7,6 +7,9 @@ export default function AboutPage() {
       <Layout>
         <Head>
           <title>About - MEZCLA</title>
+          <meta key="tw-title" name="twitter:title" content="About - MEZCLA" />
+          <meta key="og-title" property="og:title" content="About - MEZCLA" />
+          <meta key="og-url" property="og:url" content="https://mezcla.xyz/about" />
         </Head>
         <div className="p-6 flex flex-col">
           <h1 className="tracking-tight font-bold text-5xl text-center">

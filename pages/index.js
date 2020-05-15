@@ -1,74 +1,34 @@
-import {
-  useState,
-  useEffect
-} from 'react'
 import Head from 'next/head'
 import Container from '../components/container'
 import Layout from '../components/layout'
 import ItemBox from '../components/item-box'
+import firebase from '../firebase/clientApp'
 
-export default function HomePage() {
-  const [isLoading, setLoading] = useState(true)
-  const [featuredItems, setFeaturedItems] = useState(null)
-  useEffect(() => {
-    const firebase = require('../firebase/clientApp')
-    async function fireBoi() {
-      try {
-        const featuredResult = await firebase.firestore().collection('items')
-          .where('featured', '==', true)
-          .limit(3)
-          .get()
-        const tentativeFeaturedItems = []
-        featuredResult.forEach(item => tentativeFeaturedItems.push({ ...item.data(), item: item.id }))
-        setFeaturedItems(tentativeFeaturedItems)
-      } catch (e) {
-        console.error(e)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fireBoi()
-  }, [])
+const HomePage = ({ featuredItems }) => {
   let featuredItemsComponent = null
-  if (isLoading) {
+  if (featuredItems.length !== 0) {
     featuredItemsComponent = (
       <>
-        <h3 className="text-3xl font-bold mb-5">Featured Items</h3>
-        <p>Loading...</p>
+        <h3 className="text-3xl font-bold text-center">Featured Items</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-3">
+          {featuredItems.map(({ id, slug, name, defaultPrice, description, defaultImg }) => (
+            <div key={id} className="my-2 lg:px-2">
+              <ItemBox
+                id={id}
+                slug={slug}
+                name={name}
+                price={defaultPrice}
+                description={description}
+                image={defaultImg}
+              />
+            </div>
+          ))}
+        </div>
+        <a href="/shop" className="bold-border-btn inline-block text-xl px-4 py-2 leading-none border rounded mt-5">
+          See more
+          </a>
       </>
     )
-  } else {
-    if (featuredItems === null) {
-      featuredItemsComponent = (
-        <>
-          <h3 className="text-3xl font-bold mb-5">Featured Items</h3>
-          <p>An error occurred</p>
-        </>
-      )
-    } else {
-      featuredItemsComponent = (
-        <>
-          <h3 className="text-3xl font-bold text-center">Featured Items</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-3">
-            {featuredItems.map(({ id, slug, name, defaultPrice, description, defaultImg }) => (
-              <div key={id} className="my-2 lg:px-2">
-                <ItemBox
-                  id={id}
-                  slug={slug}
-                  name={name}
-                  price={defaultPrice}
-                  description={description}
-                  image={defaultImg}
-                />
-              </div>
-            ))}
-          </div>
-          <a href="/shop" className="bold-border-btn inline-block text-xl px-4 py-2 leading-none border rounded mt-5">
-            See more
-          </a>
-        </>
-      )
-    }
   }
 
   return (
@@ -108,3 +68,23 @@ export default function HomePage() {
     </>
   )
 }
+
+
+export async function getServerSideProps() {
+  const featuredResult = await firebase.firestore().collection('items')
+    .where('featured', '==', true)
+    .limit(3)
+    .get()
+  let featuredItems = []
+  featuredResult.forEach(item => {
+    const thisItem = { ...item.data(), item: item.id }
+    thisItem.additionDate = {
+      seconds: thisItem.additionDate.seconds,
+      nanoseconds: thisItem.additionDate.nanoseconds
+    }
+    featuredItems.push(thisItem)
+  })
+  return { props: { featuredItems } }
+}
+
+export default HomePage
