@@ -14,6 +14,7 @@ export default function Footer() {
           <div className="order-1 lg:order-2 flex flex-row-reverse lg:pl-4 lg:w-1/3">
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href="https://instagram.com/mezclaxyz"
               className="mx-3 font-bold"
               style={{ paddingTop: '7px' }}
@@ -23,6 +24,7 @@ export default function Footer() {
             </a>
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href="https://twitter.com/mezclaxyz"
               className="mx-3 font-bold"
             >
