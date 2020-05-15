@@ -222,7 +222,7 @@ export async function getServerSideProps({ params }) {
       seconds: thisRelatedItem.additionDate.seconds,
       nanoseconds: thisRelatedItem.additionDate.nanoseconds
     }
-    if (thisRelatedItem.slug !== slug && thisRelatedItem.visible) {
+    if (thisRelatedItem.visible && thisRelatedItem.slug !== slug) {
       relatedItems.push(thisRelatedItem)
     }
   })
