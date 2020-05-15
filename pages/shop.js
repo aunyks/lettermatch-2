@@ -27,9 +27,9 @@ const ShopPage = ({ errorCode, itemsList }) => {
           <h1 className="tracking-tight font-bold text-5xl text-center">
             Items
           </h1>
-          <div className="my-5 mx-auto grid grid-cols-1 lg:grid-cols-3">
+          <div className={`my-5 mx-auto ${itemsList.length > 0 ? 'grid grid-cols-1 lg:grid-cols-3' : ''}`}>
             {
-              itemsList.map(({ id, slug, name, defaultPrice, description, defaultImg, defaultImgAlt }) => {
+              itemsList.length > 0 ? itemsList.map(({ id, slug, name, defaultPrice, description, defaultImg, defaultImgAlt }) => {
                 return (
                   <div className="py-3 lg:p-3" key={id}>
                     <ItemBox
@@ -43,7 +43,9 @@ const ShopPage = ({ errorCode, itemsList }) => {
                     />
                   </div>
                 )
-              })
+              }) : (
+                  <h2 className="text-2xl text-center">Nothing here right now!</h2>
+                )
             }
           </div>
         </div>
@@ -66,7 +68,9 @@ export async function getServerSideProps() {
       seconds: thisItem.additionDate.seconds,
       nanoseconds: thisItem.additionDate.nanoseconds
     }
-    itemsList.push(thisItem)
+    if (thisItem.visible) {
+      itemsList.push(thisItem)
+    }
   })
   return { props: { itemsList, errorCode: false } }
 }

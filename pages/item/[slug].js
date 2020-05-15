@@ -183,16 +183,20 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
 }
 
 export async function getServerSideProps({ params }) {
+  const notFoundResponse = { props: { errorCode: 404 } }
   const { slug } = params
   const itemResult = await firebase.firestore().collection('items')
     .where('slug', '==', slug)
     .get()
   if (itemResult.docs.length === 0) {
-    return { props: { errorCode: 404 } }
+    return notFoundResponse
   }
   const resultingItem = itemResult.docs[0]
   const variantResults = await firebase.firestore().collection(`/items/${resultingItem.id}/variants`).orderBy('sku').get()
   const item = resultingItem.data()
+  if (!item.visible) {
+    return notFoundResponse
+  }
   item.additionDate = {
     seconds: item.additionDate.seconds,
     nanoseconds: item.additionDate.nanoseconds
@@ -218,7 +222,7 @@ export async function getServerSideProps({ params }) {
       seconds: thisRelatedItem.additionDate.seconds,
       nanoseconds: thisRelatedItem.additionDate.nanoseconds
     }
-    if (thisRelatedItem.slug !== slug) {
+    if (thisRelatedItem.slug !== slug && thisRelatedItem.visible) {
       relatedItems.push(thisRelatedItem)
     }
   })

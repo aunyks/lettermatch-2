@@ -83,7 +83,9 @@ export async function getServerSideProps() {
       seconds: thisItem.additionDate.seconds,
       nanoseconds: thisItem.additionDate.nanoseconds
     }
-    featuredItems.push(thisItem)
+    if (thisItem.visible) {
+      featuredItems.push(thisItem)
+    }
   })
   return { props: { featuredItems } }
 }
