@@ -11,7 +11,7 @@ const HomePage = ({ featuredItems }) => {
       <>
         <h3 className="text-3xl font-bold text-center">Featured Items</h3>
         <div className="grid grid-cols-1 lg:grid-cols-3">
-          {featuredItems.map(({ id, slug, name, defaultPrice, description, defaultImg }) => (
+          {featuredItems.map(({ id, slug, name, defaultPrice, description, defaultImg, defaultImgAlt }) => (
             <div key={id} className="my-2 lg:px-2">
               <ItemBox
                 id={id}
@@ -20,6 +20,7 @@ const HomePage = ({ featuredItems }) => {
                 price={defaultPrice}
                 description={description}
                 image={defaultImg}
+                alt={defaultImgAlt}
               />
             </div>
           ))}

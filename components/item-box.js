@@ -5,11 +5,12 @@ export default function ItemBox({
   price,
   description,
   image,
+  alt,
   noDescription
 }) {
   return (
     <a href={`/item/${slug}`}>
-      <img className="mb-2" src={image} />
+      <img className="mb-2" src={image} alt={alt} />
       <h2 className="text-2xl font-bold text-left">{name}</h2>
       <h3 className="text-xl font-bold text-left">
         {

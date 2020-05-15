@@ -29,7 +29,7 @@ const ShopPage = ({ errorCode, itemsList }) => {
           </h1>
           <div className="my-5 mx-auto grid grid-cols-1 lg:grid-cols-3">
             {
-              itemsList.map(({ id, slug, name, defaultPrice, description, defaultImg }) => {
+              itemsList.map(({ id, slug, name, defaultPrice, description, defaultImg, defaultImgAlt }) => {
                 return (
                   <div className="py-3 lg:p-3" key={id}>
                     <ItemBox
@@ -39,6 +39,7 @@ const ShopPage = ({ errorCode, itemsList }) => {
                       price={defaultPrice}
                       description={description}
                       image={defaultImg}
+                      alt={defaultImgAlt}
                     />
                   </div>
                 )

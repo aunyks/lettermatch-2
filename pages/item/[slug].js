@@ -29,6 +29,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
     slug,
     name,
     defaultImg,
+    defaultImgAlt,
     defaultPrice,
     description,
     variesBy,
@@ -55,7 +56,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
               {name}
             </h1>
-            <img className="mx-auto my-5 lg:h-2/4" src={defaultImg} />
+            <img className="mx-auto my-5 lg:h-2/4" src={defaultImg} alt={defaultImgAlt} />
             <div>
               <h2 className="font-bold text-2xl">
                 {
