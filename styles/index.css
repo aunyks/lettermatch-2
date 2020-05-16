@@ -111,3 +111,14 @@ a.nav-highlight::after {
   }
 }
 */
+
+@media only screen and (max-width: 640px) {
+
+  a.nav-highlight {
+    padding-bottom: 1px;
+  }
+
+  a.nav-highlight::after {
+    height: 2px;
+   }
+}

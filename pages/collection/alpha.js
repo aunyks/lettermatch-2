@@ -24,7 +24,7 @@ const AlphaCollectionPage = ({ errorCode, itemsList }) => {
           <meta key="og-url" property="og:url" content="https://mezcla.xyz/collection/alpha" />
         </Head>
         <div className="px-6 flex flex-col">
-          <h1 className="tracking-tight font-bold text-5xl text-center">
+          <h1 className="py-6 tracking-tight font-bold text-5xl text-center">
             Alpha Collection
           </h1>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">

@@ -19,7 +19,7 @@ const FiltersPage = ({ errorCode, filtersList }) => {
         </Head>
         <div className="p-6 flex flex-col">
           <h1 className="tracking-tight font-bold text-5xl text-center">
-            FILTERS
+            Filters
           </h1>
           <div className="lg:px-64">
             {
