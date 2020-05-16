@@ -48,7 +48,7 @@ path {
 
 a.nav-highlight {
   position: relative;
-  padding-bottom: 0px;
+  padding-bottom: 3px;
   text-decoration: none;
 }
 
@@ -57,7 +57,7 @@ a.nav-highlight::after {
   position: absolute;
   bottom: 2px;
   left: 0;
-  height: 5px;
+  height: 4px;
   width: 100%;
   background: #f0f;
   background: linear-gradient(to right, #f0f, #00f);
