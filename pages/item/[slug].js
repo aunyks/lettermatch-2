@@ -21,10 +21,11 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
   const variantChoiceCriteria = v => {
     // ignore price keys, because they'll almost always be different from
     // the default item price
-    return Object.keys(variantOptions).every(k => k === 'price' || k === 'salePrice' || v[k] === variantOptions[k])
+    return Object.keys(variantOptions).every(k => k === 'price' || k === 'salePrice' || k === 'image' || k === 'imageAlt' || v[k] === variantOptions[k])
   }
   const variantExists = item.variants.some(variantChoiceCriteria)
   const chosenVariant = item.variants.find(variantChoiceCriteria)
+  const { image, imageAlt } = chosenVariant
   const {
     slug,
     name,
@@ -56,7 +57,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
               {name}
             </h1>
-            <img className="mx-auto my-5 lg:h-2/4" src={defaultImg} alt={defaultImgAlt} />
+            <img className="mx-auto my-5 lg:h-2/4" src={image} alt={imageAlt} />
             <div>
               <h2 className="font-bold text-2xl">
                 {
@@ -115,7 +116,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
                         slug,
                         name,
                         price,
-                        img: defaultImg,
+                        img: image,
                         qty: 1,
                         sku
                       }]
@@ -134,7 +135,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
                           slug,
                           name,
                           price,
-                          img: defaultImg,
+                          img: image,
                           sku,
                           qty: 1
                         }]

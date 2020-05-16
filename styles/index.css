@@ -46,6 +46,23 @@ path {
   background: #FAFAFA;
 }
 
+a.nav-highlight {
+  position: relative;
+  padding-bottom: 0px;
+  text-decoration: none;
+}
+
+a.nav-highlight::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: #f0f;
+  background: linear-gradient(to right, #f0f, #00f);
+ }
+
 /*
 
 @media (prefers-color-scheme: dark) {
