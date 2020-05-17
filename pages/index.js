@@ -49,7 +49,7 @@ const HomePage = ({ featuredItems }) => {
           <source src="URL/TO/video.ogv" type="video/ogv" />
         </video>
         */}
-        <section className="px-6 h-screen flex flex-col justify-center">
+        <section style={{ height: `90vh` }} className="px-6 flex flex-col justify-center">
           <div>
             <h1 className="text-3xl lg:text-6xl font-bold">
               Extend your reality
@@ -64,12 +64,12 @@ const HomePage = ({ featuredItems }) => {
             </div>
           </div>
         </section>
-        {<section className="px-6 lg:px-0 py-8 bg-black text-white">
+        <section className="px-6 lg:px-0 py-16 bg-black text-white">
           <h3 className="text-2xl lg:text-3xl font-bold text-center mb-4">Extend Your Reality</h3>
           <p className="text-center text-lg lg:w-1/2 lg:mx-auto lg:text-justify lg:text-2xl">
             Discover a new era of expressive and sustainable apparel. We design products that provide explosive personality while minimizing manufacturing waste. Each of our products is brought to life using <a href="/filters" className="underline">social media filters</a>.
           </p>
-        </section>}
+        </section>
         <section className="p-6 h-1/2 text-center">
           {featuredItemsComponent}
         </section>
