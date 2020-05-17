@@ -20,6 +20,32 @@ select {
   background: #eee;
 }
 
+#index-info-box{
+  position: relative
+ }
+
+#index-info-box::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 20px;
+  width: 100%;
+  background: #f0f;
+  background: linear-gradient(to right, #f0f, #00f);
+ }
+
+#index-info-box::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  height: 20px;
+  width: 100%;
+  background: #f0f;
+  background: linear-gradient(to right, #f0f, #00f);
+ }
+
 
 .add-to-cart:disabled,
 .add-to-cart[disabled] {
