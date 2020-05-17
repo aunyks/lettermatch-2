@@ -86,7 +86,7 @@ export async function getServerSideProps() {
     .get()
   let featuredItems = []
   featuredResult.forEach(item => {
-    const thisItem = { ...item.data(), item: item.id }
+    const thisItem = { ...item.data(), id: item.id }
     thisItem.additionDate = {
       seconds: thisItem.additionDate.seconds,
       nanoseconds: thisItem.additionDate.nanoseconds
