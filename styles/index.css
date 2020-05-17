@@ -20,6 +20,7 @@ select {
   background: #eee;
 }
 
+/*
 #index-info-box{
   position: relative
  }
@@ -45,6 +46,7 @@ select {
   background: #f0f;
   background: linear-gradient(to right, #f0f, #00f);
  }
+ */
 
 
 .add-to-cart:disabled,
