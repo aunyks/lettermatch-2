@@ -37,7 +37,7 @@ export default () => {
             Home
             </a>
           <a href="/collection/alpha" className="nav-highlight block mt-4 lg:inline-block lg:mt-0 mr-4">
-            Alpha Collection
+            ALPHA Collection
             </a>
           {/*<a href="/creators" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
             Creators
