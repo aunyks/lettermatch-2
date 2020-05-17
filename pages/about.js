@@ -17,9 +17,12 @@ export default function AboutPage() {
           </h1>
           <div className="my-3 lg:my-5 lg:px-64 text-justify">
             <p className="my-4">
-              MEZCLA is a brand that exists beyond reality. Born out of frustration with the limitations of the physical world, it expands the boundaries of creative expression by fusing the physical and virtual worlds. Mixing realities is at the core of what we do, and each of our products helps you transcend these two worlds.
+              MEZCLA is a brand that exists beyond reality. Born out of frustration with the limitations of the physical world, it expands the boundaries of creative expression by fusing the physical and virtual worlds.
             </p>
-            <p>
+            <p className="my-4">
+              We take the sustainable approach to apparel, as each of our items has not only physical designs but also accompanying <a className="underline" href="/filters">social media filters</a> that bring the items to life. Our approach helps us aggressively reduce waste since customers don't need to constantly purchase new items to get new designs.
+            </p>
+            <p className="my-4">
               Join the movement. Expand your reality.
             </p>
           </div>

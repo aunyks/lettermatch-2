@@ -30,7 +30,7 @@ const FiltersPage = ({ errorCode, filtersList }) => {
                 } else {
                   // video
                   media = (
-                    <video loop className="w-full">
+                    <video loop autoPlay className="w-full">
                       <source src={mediaUrl} type="video/mp4" />
                     </video>
                   )
