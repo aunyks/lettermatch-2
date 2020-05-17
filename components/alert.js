@@ -2,8 +2,7 @@ import Container from './container'
 
 export default function Alert({ preview }) {
   return null
-  /*
-  (
+  /*(
     <div
       id="banner-alert"
     >
@@ -13,6 +12,5 @@ export default function Alert({ preview }) {
         </div>
       </Container>
     </div>
-  )
-  */
+  )*/
 }
