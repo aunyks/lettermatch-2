@@ -28,7 +28,7 @@ const ElementCollectionPage = ({ errorCode, itemsList }) => {
             ELEMENT
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">
-            An early vision of fashion that pushes the boundaries of reality, our ELEMENT Collection lends itself to be a canvas of the future and a celebration of the Earth we all inhabit. This set of minimally designed, nature-inspired apparel is brought to life using the collection's associated <a href="/filters" className="underline">Instagram Filters</a>.
+            A vision of fashion that pushes the boundaries of reality, our ELEMENT Collection lends itself to be a canvas of the future and a celebration of the Earth we inhabit. This set of minimally designed, nature-inspired apparel is brought to life using the collection's associated <a href="/filters" className="underline">Instagram Filters</a>.
           </p>
           <div className={`${itemsList.length > 0 ? 'my-5 mx-auto grid grid-cols-1 lg:grid-cols-3' : ''}`}>
             {
