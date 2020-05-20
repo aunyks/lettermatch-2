@@ -9,11 +9,11 @@ import Layout from '../../components/layout'
 import ItemBox from '../../components/item-box'
 import firebase from '../../firebase/clientApp'
 
-const AlphaCollectionPage = ({ errorCode, itemsList }) => {
+const ElementCollectionPage = ({ errorCode, itemsList }) => {
   if (errorCode) {
     return <Error statusCode={errorCode} />
   }
-  const pageTitle = `ALPHA Collection - MEZCLA`
+  const pageTitle = `ELEMENT Collection - MEZCLA`
   return (
     <>
       <Layout>
@@ -21,14 +21,14 @@ const AlphaCollectionPage = ({ errorCode, itemsList }) => {
           <title>{pageTitle}</title>
           <meta key="tw-title" name="twitter:title" content={pageTitle} />
           <meta key="og-title" property="og:title" content={pageTitle} />
-          <meta key="og-url" property="og:url" content="https://mezcla.xyz/collection/alpha" />
+          <meta key="og-url" property="og:url" content="https://mezcla.xyz/collection/element" />
         </Head>
         <div className="px-6 flex flex-col">
           <h3 className="text-5xl text-center tracking-tight font-bold my-6 inline px-3  mx-auto">
-            ALPHA
+            ELEMENT
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">
-            An early vision of fashion that pushes the boundaries of reality, our ALPHA Collection lends itself to be a canvas of the future. This set of minimally designed apparel is brought to life using the collection's associated <a href="/filters" className="underline">Instagram Filters</a>.
+            An early vision of fashion that pushes the boundaries of reality, our ELEMENT Collection lends itself to be a canvas of the future and a celebration of the Earth we all inhabit. This set of minimally designed, nature-inspired apparel is brought to life using the collection's associated <a href="/filters" className="underline">Instagram Filters</a>.
           </p>
           <div className={`${itemsList.length > 0 ? 'my-5 mx-auto grid grid-cols-1 lg:grid-cols-3' : ''}`}>
             {
@@ -59,7 +59,7 @@ const AlphaCollectionPage = ({ errorCode, itemsList }) => {
 
 export async function getServerSideProps() {
   const items = await firebase.firestore().collection('items')
-    .where('collection', '==', 'alpha')
+    .where('collection', '==', 'element')
     .get()
   let itemsList = []
   items.forEach(item => {
@@ -75,4 +75,4 @@ export async function getServerSideProps() {
   return { props: { itemsList, errorCode: false } }
 }
 
-export default AlphaCollectionPage
+export default ElementCollectionPage
