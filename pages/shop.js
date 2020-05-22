@@ -57,7 +57,7 @@ const ShopPage = ({ errorCode, itemsList }) => {
 export async function getServerSideProps() {
   const isProd = process.env.ENV_LEVEL === 'production'
   const items = await firebase.firestore().collection('items')
-    .orderBy('additionDate')
+    .orderBy('additionDate', 'desc')
     .get()
   if (items.docs.length === 0) {
     return { props: { errorCode: 500 } }

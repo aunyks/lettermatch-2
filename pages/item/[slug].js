@@ -177,6 +177,13 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
                   )
               }
             </div>
+            <div className="flex flex-row justify-center">
+              {(relatedItems !== null && relatedItems.length > 0) && (
+                <a href="/shop" className="bold-border-btn inline-block text-xl px-4 py-2 leading-none border rounded mt-5">
+                  See more
+                </a>
+              )}
+            </div>
           </section>
         </div>
       </Layout>
