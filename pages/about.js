@@ -15,7 +15,7 @@ export default function AboutPage() {
           <h1 className="tracking-tight font-bold text-5xl text-center">
             BEYOND REALITY.
           </h1>
-          <div className="my-3 lg:my-5 lg:px-64 text-justify">
+          <div className="mb-6 lg:px-64 text-justify">
             <p className="my-4">
               MEZCLA is a brand that exists beyond reality. Born out of frustration with the limitations of the physical world, it expands the boundaries of creative expression by fusing the physical and virtual worlds.
             </p>

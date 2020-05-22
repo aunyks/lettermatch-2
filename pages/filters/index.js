@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Error from 'next/error'
-import Layout from '../components/layout'
-import firebase from '../firebase/clientApp'
-import Instagram from '../components/ig'
+import Layout from '../../components/layout'
+import firebase from '../../firebase/clientApp'
+import Instagram from '../../components/ig'
 
 const FiltersPage = ({ errorCode, filtersList }) => {
   if (errorCode) {
@@ -79,13 +79,14 @@ export async function getServerSideProps() {
   let filtersList = []
   filters.forEach(filter => {
     const thisFilter = { ...filter.data(), item: filter.id }
+    if (!thisFilter.visible) {
+      return
+    }
     thisFilter.additionDate = {
       seconds: thisFilter.additionDate.seconds,
       nanoseconds: thisFilter.additionDate.nanoseconds
     }
-    if (thisFilter.visible) {
-      filtersList.push(thisFilter)
-    }
+    filtersList.push(thisFilter)
   })
   return { props: { filtersList, errorCode: false } }
 }

@@ -24,11 +24,11 @@ const ElementalCollectionPage = ({ errorCode, itemsList }) => {
           <meta key="og-url" property="og:url" content="https://mezcla.xyz/collection/element" />
         </Head>
         <div className="px-6 flex flex-col">
-          <h3 className="text-5xl text-center tracking-tight font-bold my-6 inline px-3  mx-auto">
+          <h3 className="text-5xl text-center tracking-tight font-bold mt-6 inline px-3  mx-auto">
             ELEMENTAL
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">
-            A vision of fashion that pushes the boundaries of reality, our ELEMENTAL Collection lends itself to be a canvas of the future and a celebration of the Earth we inhabit. This set of minimally designed, nature-inspired apparel is brought to life using the collection's associated <a href="/filters" className="underline">Instagram Filters</a>.
+            A vision of fashion that pushes the boundaries of reality, our ELEMENTAL Collection lends itself to be a canvas of the future and a celebration of the Earth we inhabit. This set of minimally designed, nature-inspired apparel is brought to life using the collection's associated <a href="/filters/collection/elemental" className="underline">Instagram Filters</a>.
           </p>
           <div className={`${itemsList.length > 0 ? 'my-5 mx-auto grid grid-cols-1 lg:grid-cols-3' : ''}`}>
             {

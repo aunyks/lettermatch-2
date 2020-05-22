@@ -21,13 +21,13 @@ export default function ItemBox({
             .format(price / 100)
         }
       </h3>
-      {
+      {/*
         !noDescription && (
           <p className="text-justify">
             {description.length > 200 ? (description.substring(0, 197).concat('...')) : description}
           </p>
         )
-      }
+        */}
 
     </a>
   )
