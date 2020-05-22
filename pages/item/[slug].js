@@ -90,14 +90,14 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
                         })
                       }} className="mr-2 my-2" id={variantKey}>
                         {
-                          variants.map(v => {
-                            const variantAttr = v[variantKey]
-                            return (
-                              <option key={variantAttr} value={variantAttr}>
-                                {variantAttr}
+                          variants
+                            .map(v => v[variantKey])
+                            .filter((attr, attrIndex, self) => self.indexOf(attr) === attrIndex)
+                            .map(attr => (
+                              <option key={attr} value={attr}>
+                                {attr}
                               </option>
-                            )
-                          })
+                            ))
                         }
                       </select>
                     </div>
