@@ -216,8 +216,7 @@ export async function getServerSideProps({ params }) {
 
   // just random items for now
   const fbRelatedItems = await firebase.firestore().collection('items')
-    .limit(3)
-    .orderBy('additionDate')
+    .limit(4)
     .get()
   let relatedItems = []
   fbRelatedItems.forEach(relatedItem => {
@@ -232,7 +231,7 @@ export async function getServerSideProps({ params }) {
     }
     relatedItems.push(thisRelatedItem)
   })
-  return { props: { item, relatedItems, itemSlug: slug, initialVariant: someVariant, errorCode: false } }
+  return { props: { item, relatedItems: relatedItems.slice(0, 3), itemSlug: slug, initialVariant: someVariant, errorCode: false } }
 }
 
 export default ItemPage
