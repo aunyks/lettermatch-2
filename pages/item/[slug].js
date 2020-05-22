@@ -25,7 +25,6 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
   }
   const variantExists = item.variants.some(variantChoiceCriteria)
   const chosenVariant = item.variants.find(variantChoiceCriteria)
-  const { image, imageAlt } = chosenVariant
   const {
     slug,
     name,
@@ -38,6 +37,8 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
   } = item
   const itemId = item.id
   const price = variantExists ? chosenVariant.price : defaultPrice
+  const image = !!chosenVariant ? chosenVariant.image : defaultImg
+  const imageAlt = !!chosenVariant ? chosenVariant.imageAlt : defaultImgAlt
   return (
     <>
       <Layout>
@@ -57,7 +58,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
               {name}
             </h1>
-            <img width="600" className="mx-auto my-5 lg:h-2/4" src={image} alt={imageAlt} />
+            <img width="600" className="mx-auto my-5 lg:h-2/4" src={image || defaultImg} alt={imageAlt || defaultImgAlt} />
             <div>
               <h2 className="font-bold text-2xl">
                 {
