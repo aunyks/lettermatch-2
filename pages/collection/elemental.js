@@ -64,13 +64,14 @@ export async function getServerSideProps() {
   let itemsList = []
   items.forEach(item => {
     const thisItem = { ...item.data(), item: item.id }
+    if (!thisItem.visible) {
+      return
+    }
     thisItem.additionDate = {
       seconds: thisItem.additionDate.seconds,
       nanoseconds: thisItem.additionDate.nanoseconds
     }
-    if (thisItem.visible) {
-      itemsList.push(thisItem)
-    }
+    itemsList.push(thisItem)
   })
   return { props: { itemsList, errorCode: false } }
 }

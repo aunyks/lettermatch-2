@@ -57,7 +57,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
               {name}
             </h1>
-            <img className="mx-auto my-5 lg:h-2/4" src={image} alt={imageAlt} />
+            <img width="600" className="mx-auto my-5 lg:h-2/4" src={image} alt={imageAlt} />
             <div>
               <h2 className="font-bold text-2xl">
                 {
@@ -193,11 +193,12 @@ export async function getServerSideProps({ params }) {
     return notFoundResponse
   }
   const resultingItem = itemResult.docs[0]
-  const variantResults = await firebase.firestore().collection(`/items/${resultingItem.id}/variants`).orderBy('sku').get()
   const item = resultingItem.data()
   if (!item.visible) {
     return notFoundResponse
   }
+  const variantResults = await firebase.firestore().collection(`/items/${resultingItem.id}/variants`).orderBy('sku').get()
+
   item.additionDate = {
     seconds: item.additionDate.seconds,
     nanoseconds: item.additionDate.nanoseconds

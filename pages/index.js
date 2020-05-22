@@ -87,13 +87,14 @@ export async function getServerSideProps() {
   let featuredItems = []
   featuredResult.forEach(item => {
     const thisItem = { ...item.data(), id: item.id }
+    if (!thisItem.visible) {
+      return
+    }
     thisItem.additionDate = {
       seconds: thisItem.additionDate.seconds,
       nanoseconds: thisItem.additionDate.nanoseconds
     }
-    if (thisItem.visible) {
-      featuredItems.push(thisItem)
-    }
+    featuredItems.push(thisItem)
   })
   return { props: { featuredItems } }
 }
