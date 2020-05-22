@@ -184,6 +184,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
 }
 
 export async function getServerSideProps({ params }) {
+  const isProd = process.env.ENV_LEVEL === 'production'
   const notFoundResponse = { props: { errorCode: 404 } }
   const { slug } = params
   const itemResult = await firebase.firestore().collection('items')
@@ -194,7 +195,7 @@ export async function getServerSideProps({ params }) {
   }
   const resultingItem = itemResult.docs[0]
   const item = resultingItem.data()
-  if (!item.visible) {
+  if (!item.visible || (isProd && !item.live)) {
     return notFoundResponse
   }
   const variantResults = await firebase.firestore().collection(`/items/${resultingItem.id}/variants`).orderBy('sku').get()
@@ -220,13 +221,15 @@ export async function getServerSideProps({ params }) {
   let relatedItems = []
   fbRelatedItems.forEach(relatedItem => {
     const thisRelatedItem = { ...relatedItem.data(), id: relatedItem.id }
+    if (!thisRelatedItem.visible || thisRelatedItem.slug === slug
+      || (isProd && !thisRelatedItem.live)) {
+      return
+    }
     thisRelatedItem.additionDate = {
       seconds: thisRelatedItem.additionDate.seconds,
       nanoseconds: thisRelatedItem.additionDate.nanoseconds
     }
-    if (thisRelatedItem.visible && thisRelatedItem.slug !== slug) {
-      relatedItems.push(thisRelatedItem)
-    }
+    relatedItems.push(thisRelatedItem)
   })
   return { props: { item, relatedItems, itemSlug: slug, initialVariant: someVariant, errorCode: false } }
 }

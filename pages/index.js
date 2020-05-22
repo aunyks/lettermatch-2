@@ -80,6 +80,7 @@ const HomePage = ({ featuredItems }) => {
 
 
 export async function getServerSideProps() {
+  const isProd = process.env.ENV_LEVEL === 'production'
   const featuredResult = await firebase.firestore().collection('items')
     .where('featured', '==', true)
     .limit(3)
@@ -87,7 +88,7 @@ export async function getServerSideProps() {
   let featuredItems = []
   featuredResult.forEach(item => {
     const thisItem = { ...item.data(), id: item.id }
-    if (!thisItem.visible) {
+    if (!thisItem.visible || (isProd && !thisItem.live)) {
       return
     }
     thisItem.additionDate = {

@@ -13,5 +13,6 @@ module.exports = {
     FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID,
     TWILIO_SID: process.env.TWILIO_SID,
     TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
+    ENV_LEVEL: process.env.ENV_LEVEL
   },
 }

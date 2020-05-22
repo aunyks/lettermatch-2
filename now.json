@@ -9,7 +9,8 @@
       "FIREBASE_APP_ID": "@firebase-app-id",
       "FIREBASE_MEASUREMENT_ID": "@firebase-measurement-id",
       "TWILIO_SID": "@twilio-sid",
-      "TWILIO_AUTH_TOKEN": "@twilio-auth-token"
+      "TWILIO_AUTH_TOKEN": "@twilio-auth-token",
+      "ENV_LEVEL": "@env-level"
     }
   }
 }

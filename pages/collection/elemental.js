@@ -58,13 +58,14 @@ const ElementalCollectionPage = ({ errorCode, itemsList }) => {
 }
 
 export async function getServerSideProps() {
+  const isProd = process.env.ENV_LEVEL === 'production'
   const items = await firebase.firestore().collection('items')
     .where('collection', '==', 'elemental')
     .get()
   let itemsList = []
   items.forEach(item => {
     const thisItem = { ...item.data(), item: item.id }
-    if (!thisItem.visible) {
+    if (!thisItem.visible || (isProd && !thisItem.live)) {
       return
     }
     thisItem.additionDate = {
