@@ -152,6 +152,12 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
               </button>
               <p className="text-justify text-base">
                 {description}
+                <br />
+                <a
+                  href={`/filters/${slug}`}
+                  className="my-4 inline-block bg-black text-white rounded-full no-underline px-6 py-1 lg:px-4 lg:py-1">
+                  Filters
+                </a>
               </p>
             </div>
           </main>
