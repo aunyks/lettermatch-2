@@ -16,6 +16,9 @@ export default function ThanksPage() {
             <p className="my-4">
               We appreciate your order! You'll receive an email with your receipt very soon. In the meantime, follow us on <a className="underline" href="https://www.instagram.com/mezclaxyz">Instagram</a>, <a className="underline" href="https://twitter.com/mezclaxyz">Twitter</a> and <a className="underline" href="https://www.facebook.com/mezclaxyz">Facebook</a> @mezclaxyz.
             </p>
+            <p>
+              Tag us or #BeyondReality to be featured on our social media!
+            </p>
           </div>
         </div>
       </Layout>
