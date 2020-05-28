@@ -74,6 +74,7 @@ export default function CartPage() {
                                 const tempCart = [...cart]
                                 tempCart[itemIdx].qty = tempCart[itemIdx].qty + 1
                                 window.localStorage.setItem('cart', JSON.stringify(tempCart))
+                                window.postMessage(window.localStorage.getItem('cart'), window.location.origin)
                                 updateCart(tempCart)
                               }} className="cart-qty border rounded-l text-lg px-4 font-bold text-center">+</button>
                               <button onClick={() => {
@@ -81,6 +82,7 @@ export default function CartPage() {
                                 const tempCart = [...cart]
                                 tempCart[itemIdx].qty = tempCart[itemIdx].qty - 1
                                 window.localStorage.setItem('cart', JSON.stringify(tempCart))
+                                window.postMessage(window.localStorage.getItem('cart'), window.location.origin)
                                 updateCart(tempCart)
                               }} className="cart-qty border rounded-r text-lg px-4 font-bold text-center">-</button>
                               <br />
@@ -88,6 +90,7 @@ export default function CartPage() {
                               <button onClick={() => {
                                 const filteredCart = cart.filter(item => item.sku !== sku)
                                 window.localStorage.setItem('cart', JSON.stringify(filteredCart))
+                                window.postMessage(window.localStorage.getItem('cart'), window.location.origin)
                                 updateCart(filteredCart)
                               }} className="text-xs cart-qty border rounded px-2 py-1 font-bold text-center">Delete</button>
                             </div>

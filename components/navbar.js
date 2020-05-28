@@ -13,6 +13,28 @@ export default () => {
     if (document.body.clientWidth >= largeScreenW) {
       setNavbarOpen(true)
     }
+
+
+    const updateCartSize = serializedCart => {
+      if (typeof serializedCart !== 'string') {
+        return
+      }
+      const deserializedCart = JSON.parse(serializedCart)
+      let cartSize = 0
+      deserializedCart.forEach(item => {
+        cartSize += item.qty
+      })
+      setCartLen(cartSize)
+    }
+    window.addEventListener('message', ({ origin, data }) => {
+      if (origin === window.location.origin) {
+        updateCartSize(data)
+      }
+    }, false)
+    const storedCart = window.localStorage.getItem('cart')
+    if (storedCart !== null) {
+      updateCartSize(storedCart)
+    }
   }, [])
   return (
     <nav id="navbar" className="flex items-center justify-between flex-wrap p-6">
@@ -65,8 +87,8 @@ export default () => {
                 Sign up
               </a>
             */}
-          <a href="/cart" className="underline block mt-4 lg:inline-block lg:mt-0 mr-4">
-            Cart
+          <a href="/cart" className="lg:border-b-2 block mt-4 lg:inline-block lg:mt-0 mr-4">
+            {cartLen === null ? 'Cart (0)' : `Cart (${cartLen})`}
           </a>
         </div>
       </div>

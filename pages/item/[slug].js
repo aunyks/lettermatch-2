@@ -143,6 +143,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
                       }
                     }
                     browserStorage.setItem('cart', JSON.stringify(currentCart))
+                    window.postMessage(browserStorage.getItem('cart'), window.location.origin)
                     if (confirm('Item added to cart! Ready to check out?')) {
                       window.location.pathname = '/cart'
                     }
