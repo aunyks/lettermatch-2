@@ -74,9 +74,6 @@ export default () => {
           <a href="/about" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
             About
             </a>
-          <a style={{ cursor: 'pointer' }} onClick={() => alert('For all inquiries:\ncontact@mezcla.xyz')} className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-            Contact
-            </a>
 
           {/*
               <strong className="mr-4 hidden lg:inline-block">|</strong>
