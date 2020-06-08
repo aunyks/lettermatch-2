@@ -23,7 +23,7 @@ export default function Layout({ preview, noNav, children }) {
                 </Container>
               </div>
             )} />
-            <main className="pt-12">{children}</main>
+            <main className="pt-20 lg:pt-16">{children}</main>
           </>
         )}
       </div>
