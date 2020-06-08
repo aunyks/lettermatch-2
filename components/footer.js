@@ -1,6 +1,6 @@
-import Container from './container'
-import Twitter from './tw'
-import Instagram from './ig'
+import Container from 'components/container'
+import Twitter from 'components/tw'
+import Instagram from 'components/ig'
 
 export default function Footer() {
   return (

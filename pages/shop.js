@@ -4,10 +4,10 @@ import {
 } from 'react'
 import Head from 'next/head'
 import Error from 'next/error'
-import Container from '../components/container'
-import Layout from '../components/layout'
-import ItemBox from '../components/item-box'
-import firebase from '../firebase/clientApp'
+import Container from 'components/container'
+import Layout from 'components/layout'
+import ItemBox from 'components/item-box'
+import firebase from 'firebase/clientApp'
 
 const ShopPage = ({ errorCode, itemsList }) => {
   if (errorCode) {

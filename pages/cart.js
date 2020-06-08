@@ -3,8 +3,8 @@ import {
   useEffect
 } from 'react'
 import Head from 'next/head'
-import Container from '../components/container'
-import Layout from '../components/layout'
+import Container from 'components/container'
+import Layout from 'components/layout'
 
 export default function CartPage() {
   const flatShippingRate = 10

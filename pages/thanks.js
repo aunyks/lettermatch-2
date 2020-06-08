@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import Layout from '../components/layout'
-import Twitter from '../components/tw'
-import Instagram from '../components/ig'
+import Layout from 'components/layout'
+import Twitter from 'components/tw'
+import Instagram from 'components/ig'
 
 export default function ThanksPage() {
   return (

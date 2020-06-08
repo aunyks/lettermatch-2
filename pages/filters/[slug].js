@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Error from 'next/error'
-import Layout from '../../components/layout'
-import firebase from '../../firebase/clientApp'
-import Instagram from '../../components/ig'
+import Layout from 'components/layout'
+import firebase from 'firebase/clientApp'
+import Instagram from 'components/ig'
 
 const ItemFiltersPage = ({ errorCode, itemName, itemSlug, filtersList }) => {
   if (errorCode) {

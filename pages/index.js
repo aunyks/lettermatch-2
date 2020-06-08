@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Container from '../components/container'
-import Layout from '../components/layout'
-import ItemBox from '../components/item-box'
-import firebase from '../firebase/clientApp'
+import Container from 'components/container'
+import Layout from 'components/layout'
+import ItemBox from 'components/item-box'
+import firebase from 'firebase/clientApp'
 
 const HomePage = ({ featuredItems }) => {
   let featuredItemsComponent = null
