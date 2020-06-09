@@ -1,6 +1,6 @@
 import Footer from 'components/footer'
 import Meta from 'components/meta'
-import Container from 'components/container'
+import Alert from 'components/Alert'
 import Navbar from 'components/navbar'
 
 export default function Layout({ preview, noNav, children }) {
@@ -10,19 +10,7 @@ export default function Layout({ preview, noNav, children }) {
       <div className="min-h-screen">
         {!noNav && (
           <>
-            <Navbar alert={(
-              <div
-                id="banner-alert"
-              >
-                <Container>
-                  <div className="py-2 text-center text-sm">
-                    Check out <a className="underline" href="https://blog.mezcla.xyz/posts/our-approach-to-sustainability">
-                      our approach to sustainability.
-                      </a>
-                  </div>
-                </Container>
-              </div>
-            )} />
+            <Navbar alert={<Alert />} />
             <main className="pt-20 lg:pt-16">{children}</main>
           </>
         )}
