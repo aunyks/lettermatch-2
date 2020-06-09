@@ -5,7 +5,10 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
+        <Head />
+        <body className="font-sans h-full w-full">
+          <Main />
+          <NextScript />
           {isProd && (
             <>
               <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4SXLPN72R"></script>
@@ -20,10 +23,6 @@ export default class MyDocument extends Document {
               </script>
             </>
           )}
-        </Head>
-        <body className="font-sans h-full w-full">
-          <Main />
-          <NextScript />
         </body>
       </Html>
     )
