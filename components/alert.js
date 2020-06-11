@@ -7,7 +7,7 @@ export default function Alert() {
     >
       <Container>
         <div className="py-2 text-center text-sm">
-          Check out <a className="underline" href="https://blog.mezcla.xyz/posts/our-approach-to-sustainability">
+          Check out <a className="underline" target="_blank" href="https://blog.mezcla.xyz/posts/our-approach-to-sustainability">
             our approach to sustainability.
             </a>
         </div>
