@@ -27,12 +27,12 @@ export default function Meta() {
       <meta name="theme-color" content="#000000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta key="desc" name="description" content="Find clothing, posters and accessories with mixed reality experiences." />
-      <meta key="tw-img-src" name="twitter:image" content="https://mezcla.xyz/assets/img/default-card.png" />
+      <meta key="tw-img-src" name="twitter:image" content="https://mezcla.xyz/assets/img/default-card-cohesive.png" />
       <meta key="tw-site" name="twitter:site" content="@mezclaxyz" />
       <meta key="tw-card" name="twitter:card" content="summary_large_image" />
       <meta key="tw-title" name="twitter:title" content="MEZCLA" />
       <meta key="tw-desc" name="twitter:description" content="Find clothing, posters and accessories with mixed reality experiences." />
-      <meta key="og-img" property="og:image" content="https://mezcla.xyz/assets/img/default-card.png" />
+      <meta key="og-img" property="og:image" content="https://mezcla.xyz/assets/img/default-card-cohesive.png" />
       <meta key="og-site-name" property="og:site_name" content="MEZCLA" />
       <meta key="og-type" property="og:type" content="website" />
       <meta key="og-title" property="og:title" content="MEZCLA" />

@@ -1,6 +1,6 @@
 import Footer from 'components/footer'
 import Meta from 'components/meta'
-import Alert from 'components/Alert'
+import Alert from 'components/alert'
 import Navbar from 'components/navbar'
 
 export default function Layout({ preview, noNav, children }) {
