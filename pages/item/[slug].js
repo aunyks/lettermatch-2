@@ -18,10 +18,17 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
   useEffect(() => {
     setStorage(window.localStorage)
   }, [])
+  const variantKeysToIgnore = [
+    'price',
+    'sale',
+    'salePrice',
+    'image',
+    'imageAlt'
+  ]
   const variantChoiceCriteria = v => {
     // ignore price keys, because they'll almost always be different from
     // the default item price
-    return Object.keys(variantOptions).every(k => k === 'price' || k === 'salePrice' || k === 'image' || k === 'imageAlt' || v[k] === variantOptions[k])
+    return Object.keys(variantOptions).every(k => variantKeysToIgnore.includes(k) || v[k] === variantOptions[k])
   }
   const variantExists = item.variants.some(variantChoiceCriteria)
   const chosenVariant = item.variants.find(variantChoiceCriteria)
@@ -223,7 +230,9 @@ export async function getServerSideProps({ params }) {
   item.variants = []
   variantResults.forEach(n => {
     const thisVariant = n.data()
-    item.variants.push(thisVariant)
+    if (thisVariant.hasOwnProperty('visible') && thisVariant.visible) {
+      item.variants.push(thisVariant)
+    }
   })
   const someVariant = { ...item.variants[0] }
   delete someVariant.sku
