@@ -10,7 +10,7 @@ export default function ThanksPage() {
         <Head>
           <title>Thank You - MEZCLA</title>
         </Head>
-        <div className="p-6 flex flex-col">
+        <div className="px-6 py-8 flex flex-col">
           <h1 className="tracking-tight font-bold text-5xl lg:text-center">
             Thanks!
           </h1>

@@ -53,7 +53,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
           <meta key="og-url" property="og:url" content={`https://mezcla.xyz/item/${itemSlug}`} />
           <meta key="og-desc" property="og:description" content={description} />
         </Head>
-        <div className="px-6 pt-6 pb-12">
+        <div className="px-6 py-8 pt-6 pb-12">
           <main className="mb-6 mx-auto lg:mb-12 lg:w-3/5">
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
               {name}

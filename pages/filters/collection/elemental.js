@@ -17,7 +17,7 @@ const ElementalFiltersPage = ({ errorCode, filtersList }) => {
           <meta key="og-title" property="og:title" content="ELEMENTAL Collection Filters - MEZCLA" />
           <meta key="og-url" property="og:url" content="https://mezcla.xyz/filters/collection/elemental" />
         </Head>
-        <div className="p-6 flex flex-col">
+        <div className="px-6 py-8 flex flex-col">
           <h1 className="tracking-tight font-bold text-5xl text-center">
             ELEMENTAL Collection Filters
           </h1>

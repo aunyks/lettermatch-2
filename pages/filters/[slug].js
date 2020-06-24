@@ -18,7 +18,7 @@ const ItemFiltersPage = ({ errorCode, itemName, itemSlug, filtersList }) => {
           <meta key="og-title" property="og:title" content={pageTitle} />
           <meta key="og-url" property="og:url" content={`https://mezcla.xyz/filters/${itemSlug}`} />
         </Head>
-        <div className="p-6 flex flex-col">
+        <div className="px-6 py-8 flex flex-col">
           <h1 className="tracking-tight font-bold text-5xl text-center">
             {`${itemName} Filters`}
           </h1>

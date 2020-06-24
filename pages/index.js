@@ -49,7 +49,7 @@ const HomePage = ({ featuredItems }) => {
           <source src="URL/TO/video.ogv" type="video/ogv" />
         </video>
         */}
-        <section style={{ height: `90vh` }} className="px-6 flex flex-col justify-center">
+        <section style={{ height: `90vh` }} className="px-6 py-8 flex flex-col justify-center">
           <div>
             <h1 className="text-3xl lg:text-6xl font-bold">
               Extend your reality

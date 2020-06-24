@@ -23,7 +23,7 @@ const ElementalCollectionPage = ({ errorCode, itemsList }) => {
           <meta key="og-title" property="og:title" content={pageTitle} />
           <meta key="og-url" property="og:url" content="https://mezcla.xyz/collection/element" />
         </Head>
-        <div className="px-6 flex flex-col">
+        <div className="px-6 py-8 flex flex-col">
           <h3 className="text-5xl text-center tracking-tight font-bold mt-6 inline px-3  mx-auto">
             ELEMENTAL
           </h3>
