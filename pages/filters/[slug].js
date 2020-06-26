@@ -88,7 +88,7 @@ export async function getServerSideProps({ params }) {
   }
   const resultingItem = itemResult.docs[0]
   const item = resultingItem.data()
-  if (!item.visible || (isProd && !item.live)) {
+  if (!item.hasOwnProperty('visible') || !item.visible || (isProd && !item.live)) {
     return notFoundResponse
   }
   let filtersList = []

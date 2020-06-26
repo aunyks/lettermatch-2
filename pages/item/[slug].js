@@ -217,7 +217,7 @@ export async function getServerSideProps({ params }) {
   }
   const resultingItem = itemResult.docs[0]
   const item = resultingItem.data()
-  if (!item.visible || (isProd && !item.live)) {
+  if (!item.hasOwnProperty('visible') || !item.visible || (isProd && !item.live)) {
     return notFoundResponse
   }
   const variantResults = await firebase.firestore().collection(`/items/${resultingItem.id}/variants`).orderBy('sku').get()
@@ -244,7 +244,7 @@ export async function getServerSideProps({ params }) {
   let relatedItems = []
   fbRelatedItems.forEach(relatedItem => {
     const thisRelatedItem = { ...relatedItem.data(), id: relatedItem.id }
-    if (!thisRelatedItem.visible || thisRelatedItem.slug === slug
+    if (!thisRelatedItem.hasOwnProperty('visible') || !thisRelatedItem.visible || thisRelatedItem.slug === slug
       || (isProd && !thisRelatedItem.live)) {
       return
     }

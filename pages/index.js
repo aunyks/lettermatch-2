@@ -88,7 +88,7 @@ export async function getServerSideProps() {
   let featuredItems = []
   featuredResult.forEach(item => {
     const thisItem = { ...item.data(), id: item.id }
-    if (!thisItem.visible || (isProd && !thisItem.live)) {
+    if (!thisItem.hasOwnProperty('visible') || !thisItem.visible || (isProd && !thisItem.live)) {
       return
     }
     thisItem.additionDate = {

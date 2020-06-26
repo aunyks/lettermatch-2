@@ -65,7 +65,7 @@ export async function getServerSideProps() {
   let itemsList = []
   items.forEach(item => {
     const thisItem = { ...item.data(), item: item.id }
-    if (!thisItem.visible || (isProd && !thisItem.live)) {
+    if (!thisItem.hasOwnProperty('visible') || !thisItem.visible || (isProd && !thisItem.live)) {
       return
     }
     thisItem.additionDate = {
