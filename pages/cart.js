@@ -6,6 +6,8 @@ import Head from 'next/head'
 import Container from 'components/container'
 import Layout from 'components/layout'
 
+
+
 export default function CartPage() {
   const flatShippingRate = 10
   const [isLoading, setLoading] = useState(true)
@@ -21,13 +23,14 @@ export default function CartPage() {
   const subtotal = cart.reduce((sum, itemA) => {
     return sum + itemA.price * itemA.qty
   }, 0)
+  const STRIPE_TOKEN = process.env.STRIPE_TOKEN
+  const isProd = process.env.ENV_LEVEL === 'production'
   return (
     <>
       <Layout>
         <Head>
           <title>Your Cart - MEZCLA</title>
           <script src="https://js.stripe.com/v3/"></script>
-          <script src="/assets/js/checkout.js"></script>
         </Head>
         <div className="px-6 py-8">
           <h1 className="tracking-tight font-bold text-5xl text-center">
@@ -135,7 +138,28 @@ export default function CartPage() {
                         }))
                           .format((subtotal + (flatShippingRate * 100)) / 100)}</span>
                       </div>
-                      <button id="pay-now-btn" className="primary-btn block text-center border text-base w-full py-2 my-1">
+                      <button id="pay-now-btn" className="primary-btn block text-center border text-base w-full py-2 my-1"
+                        onClick={async () => {
+                          const stripe = Stripe(STRIPE_TOKEN)
+                          try {
+                            if (cart !== null) {
+                              const stripeResult = await stripe.redirectToCheckout({
+                                items: isProd ? [...cart.filter(({ qty }) => qty > 0).map(item => ({ sku: item.sku, quantity: item.qty })), { sku: `sku_HFChokUB3iPkcc`, quantity: 1 }] : [{ sku: 'sku_HEhZ0iN0oNAfrE', quantity: 1 }],
+                                clientReferenceId: `${parseInt(Math.random() * (10 ** 15))}`,
+                                shippingAddressCollection: {
+                                  allowedCountries: [`US`],
+                                },
+                                successUrl: window.location.protocol + `//mezcla.xyz/thanks`,
+                                cancelUrl: window.location.protocol + `//mezcla.xyz/cart`,
+                              })
+                              if (stripeResult.error) {
+                                throw stripeResult.error.message
+                              }
+                            }
+                          } catch (e) {
+                            console.error(e)
+                          }
+                        }}>
                         Checkout
                       </button>
                     </div>

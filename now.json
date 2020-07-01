@@ -1,16 +1,19 @@
 {
   "build": {
     "env": {
-      "FIREBASE_API_KEY": "@firebase-api-key",
-      "FIREBASE_DATABASE_URL": "@firebase-database-url",
-      "FIREBASE_PROJECT_ID": "@firebase-project-id",
-      "FIREBASE_STORAGE_BUCKET": "@firebase-storage-bucket",
-      "FIREBASE_MESSAGING_SENDER": "@firebase-messaging-sender",
-      "FIREBASE_APP_ID": "@firebase-app-id",
-      "FIREBASE_MEASUREMENT_ID": "@firebase-measurement-id",
-      "TWILIO_SID": "@twilio-sid",
-      "TWILIO_AUTH_TOKEN": "@twilio-auth-token",
-      "ENV_LEVEL": "@env-level"
+      "ENV_LEVEL": "@env-level-production-wz93",
+      "FIREBASE_API_KEY": "@firebase-api-key-production-9wo6",
+      "FIREBASE_DATABASE_URL": "@firebase-database-url-production-9dh3",
+      "FIREBASE_PROJECT_ID": "@firebase-project-id-production-s887",
+      "FIREBASE_STORAGE_BUCKET": "@firebase-storage-bucket-production-tco9",
+      "FIREBASE_MESSAGING_SENDER": "@firebase-messaging-sender-production-y45e",
+      "FIREBASE_APP_ID": "@firebase-app-id-production-6k4r",
+      "FIREBASE_MEASUREMENT_ID": "@firebase-measurement-id-production-vrua",
+      "TWILIO_SID": "@twilio-sid-production-1l6u",
+      "TWILIO_AUTH_TOKEN": "@twilio-auth-token-production-vcd5",
+      "STRIPE_TOKEN": "@stripe-token-production-ie7g",
+      "STRIPE_ENDPOINT_TOKEN": "@stripe-endpoint-token-production-tg2n",
+      "STRIPE_SECRET_KEY": "stripe-secret-key-production-pkho"
     }
   }
 }
