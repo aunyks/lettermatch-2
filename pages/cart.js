@@ -32,7 +32,7 @@ export default function CartPage() {
           <title>Your Cart - MEZCLA</title>
           <script src="https://js.stripe.com/v3/"></script>
         </Head>
-        <div className="px-6 py-8">
+        <div className="px-6 pt-12 pb-6">
           <h1 className="tracking-tight font-bold text-5xl text-center">
             {
               isLoading ?

@@ -8,12 +8,17 @@ export default function Footer() {
       <Container>
         <div className="flex flex-col lg:flex-row w-full justify-between">
           <div id="info-side" className="flex flex-col lg:flex-row w-full lg:w-1/2">
-            <div className="flex flex-col mb-2 lg:mb-0 lg:mr-2">
+            <div className="flex flex-col mb-2 lg:mb-0 lg:mr-4">
+              <span className="font-bold text-sm uppercase">Learn</span>
+              <a href="/how-to-wear" className="text-xs">How to wear</a>
+              <a href="/creators" className="text-xs">Make your own filters</a>
+            </div>
+            <div className="flex flex-col mb-2 lg:mb-0 lg:mr-4">
               <span className="font-bold text-sm uppercase">Shop</span>
               <a href="/shop" className="text-xs">All Items</a>
               <a href="/collection/elemental" className="text-xs">ELEMENTAL Collection</a>
             </div>
-            <div className="flex flex-col my-2 lg:my-0 lg:mx-2">
+            <div className="flex flex-col my-2 lg:my-0 lg:mx-4">
               <span className="font-bold text-sm uppercase">Company</span>
               <a href="/about" className="text-xs">About</a>
               <a href="https://blog.mezcla.xyz" className="text-xs">Blog</a>

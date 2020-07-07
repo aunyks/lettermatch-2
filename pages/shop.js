@@ -23,8 +23,8 @@ const ShopPage = ({ errorCode, itemsList }) => {
           <meta key="og-title" property="og:title" content={pageTitle} />
           <meta key="og-url" property="og:url" content="https://mezcla.xyz/shop" />
         </Head>
-        <div className="px-6 flex flex-col">
-          <h1 className="py-8 tracking-tight font-bold text-5xl text-center">
+        <div className="px-6 pt-12 pb-6 flex flex-col">
+          <h1 className="tracking-tight font-bold text-5xl text-center">
             Items
           </h1>
           <div className={`my-5 mx-auto ${itemsList.length > 0 ? 'grid grid-cols-1 lg:grid-cols-3' : ''}`}>

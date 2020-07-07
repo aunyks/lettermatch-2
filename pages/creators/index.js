@@ -11,19 +11,16 @@ export default function CreatorsPage() {
           <meta key="og-title" property="og:title" content="Creators - MEZCLA" />
           <meta key="og-url" property="og:url" content="https://mezcla.xyz/creators" />
         </Head>
-        <div className="p-6 flex flex-col">
+        <div className="px-6 pt-12 pb-6 flex flex-col">
           <h1 className="tracking-tight font-bold text-5xl text-center">
             CREATORS
           </h1>
           <div className="lg:px-64 text-justify">
             <p className="my-4">
-              We invite filter designers, mixed reality artists, and creatives of all types to use each of our items as your own canvas for creative expression.
+              We invite filter designers, AR/VR artists, and creatives of all types to use our items as canvases for creative expression.
             </p>
             <p className="my-4">
-              Use our ELEMENT Collection filter template to get started making your own filter. Never made an Instagram filter before? Check out our Get Started Guide to make your first one!
-            </p>
-            <p className="my-4">
-              Any questions? DM us @mezclaxyz.
+              Interested? Shoot us a message letting us know at <a className="underline" href="mailto:creators@mezcla.xyz">creators@mezcla.xyz</a> and we'll see if we can help out.
             </p>
           </div>
         </div>
