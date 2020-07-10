@@ -83,7 +83,7 @@ export async function getServerSideProps() {
   let filtersList = []
   filters.forEach(filter => {
     const thisFilter = { ...filter.data(), item: filter.id }
-    if (!thisFilter.visible || thisFilter.collection !== 'elemental') {
+    if (!thisFilter.hasOwnProperty('visible') || !thisFilter.visible || thisFilter.collection !== 'elemental') {
       return
     }
     thisFilter.additionDate = {

@@ -47,18 +47,18 @@ path {
   background: #FAFAFA;
 }
 
-a.nav-highlight {
+.nav-highlight {
   position: relative;
-  padding-bottom: 3px;
+  padding-bottom: 3px; /* prev 3 */
   text-decoration: none;
 }
 
-a.nav-highlight::after {
+.nav-highlight::after {
   content: "";
   position: absolute;
   bottom: 2px;
   left: 0;
-  height: 4px;
+  height: 3px; /* prev 4 */
   width: 100%;
   background: #f0f;
   background: linear-gradient(to right, #f0f, #00f);
@@ -115,11 +115,11 @@ a.nav-highlight::after {
 
 @media only screen and (max-width: 640px) {
 
-  a.nav-highlight {
+  .nav-highlight {
     padding-bottom: 1px;
   }
 
-  a.nav-highlight::after {
+  .nav-highlight::after {
     height: 2px;
    }
 }

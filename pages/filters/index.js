@@ -3,6 +3,7 @@ import Error from 'next/error'
 import Layout from 'components/layout'
 import firebase from 'firebase/clientApp'
 import Instagram from 'components/ig'
+import Snapchat from 'components/snapchat'
 
 const FiltersPage = ({ errorCode, filtersList }) => {
   if (errorCode) {
@@ -51,6 +52,14 @@ const FiltersPage = ({ errorCode, filtersList }) => {
                                 <Instagram width={25} />
                               </a>
                             )
+                          } else if (platformId === 'snapchat') {
+                            return (
+                              <a href={platformUrl} target="_blank" rel="noopener noreferrer">
+                                <Snapchat width={25} />
+                              </a>
+                            )
+                          } else {
+                            return <></>
                           }
                         })}
                       </div>
@@ -79,7 +88,7 @@ export async function getServerSideProps() {
   let filtersList = []
   filters.forEach(filter => {
     const thisFilter = { ...filter.data(), item: filter.id }
-    if (!thisFilter.visible) {
+    if (!thisFilter.hasOwnProperty('visible') || !thisFilter.visible) {
       return
     }
     thisFilter.additionDate = {

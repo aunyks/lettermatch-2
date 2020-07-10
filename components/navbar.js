@@ -2,6 +2,7 @@ import {
   useState,
   useEffect
 } from 'react'
+import CollectionsDropdown from 'components/collections-dropdown'
 
 export default function Navbar({ alert }) {
   const [isOpen, setNavbarOpen] = useState(false)
@@ -61,13 +62,7 @@ export default function Navbar({ alert }) {
             <a href="/" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
               Home
             </a>
-            <a href="/collection/elemental" className="nav-highlight block mt-4 lg:inline-block lg:mt-0 mr-4">
-              ELEMENTAL Collection
-            </a>
-            {/*<a href="/creators" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-            Creators
-            </a>
-  */}
+            <CollectionsDropdown />
             <a href="/filters" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
               Filters
             </a>

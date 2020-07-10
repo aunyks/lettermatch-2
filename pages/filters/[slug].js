@@ -52,6 +52,14 @@ const ItemFiltersPage = ({ errorCode, itemName, itemSlug, filtersList }) => {
                                 <Instagram width={25} />
                               </a>
                             )
+                          } else if (platformId === 'snapchat') {
+                            return (
+                              <a href={platformUrl} target="_blank" rel="noopener noreferrer">
+                                <Snapchat width={25} />
+                              </a>
+                            )
+                          } else {
+                            return <></>
                           }
                         })}
                       </div>
