@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import DynamicMeta from 'components/dynamic-meta'
 import Error from 'next/error'
 import Layout from 'components/layout'
 import firebase from 'firebase/clientApp'
@@ -12,12 +12,11 @@ const ElementalFiltersPage = ({ errorCode, filtersList }) => {
   return (
     <>
       <Layout>
-        <Head>
-          <title>ELEMENTAL Collection Filters - MEZCLA</title>
-          <meta key="tw-title" name="twitter:title" content="ELEMENTAL Collection Filters - MEZCLA" />
-          <meta key="og-title" property="og:title" content="ELEMENTAL Collection Filters - MEZCLA" />
-          <meta key="og-url" property="og:url" content="https://mezcla.xyz/filters/collection/elemental" />
-        </Head>
+        <DynamicMeta
+          title="ELEMENTAL Collection Filters - MEZCLA"
+          url="https://mezcla.xyz/filters/collection/elemental"
+          imageUrl="/assets/img/elemental-banner.jpg"
+        />
         <div className="px-6 py-8 flex flex-col">
           <h1 className="tracking-tight font-bold text-5xl text-center">
             ELEMENTAL Collection Filters

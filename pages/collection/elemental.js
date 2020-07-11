@@ -2,8 +2,8 @@ import {
   useState,
   useEffect
 } from 'react'
-import Head from 'next/head'
 import Error from 'next/error'
+import DynamicMeta from 'components/dynamic-meta'
 import Container from 'components/container'
 import Layout from 'components/layout'
 import ItemBox from 'components/item-box'
@@ -13,16 +13,15 @@ const ElementalCollectionPage = ({ errorCode, itemsList }) => {
   if (errorCode) {
     return <Error statusCode={errorCode} />
   }
-  const pageTitle = `ELEMENTAL Collection - MEZCLA`
   return (
     <>
       <Layout>
-        <Head>
-          <title>{pageTitle}</title>
-          <meta key="tw-title" name="twitter:title" content={pageTitle} />
-          <meta key="og-title" property="og:title" content={pageTitle} />
-          <meta key="og-url" property="og:url" content="https://mezcla.xyz/collection/element" />
-        </Head>
+        <DynamicMeta
+          title="ELEMENTAL Collection - MEZCLA"
+          url="https://mezcla.xyz/collection/elemental"
+          imageUrl="/assets/img/elemental-banner.jpg"
+          description="A vision of fashion that pushes the boundaries of reality, our ELEMENTAL Collection lends itself to be a canvas of the future and a celebration of the Earth we inhabit. This set of minimally designed, nature-inspired apparel is brought to life using the collection's filters."
+        />
         <div className="px-6 pt-8 pb-6 flex flex-col">
           <h3 className="text-5xl text-center tracking-tight font-bold mt-6 inline px-3  mx-auto">
             ELEMENTAL

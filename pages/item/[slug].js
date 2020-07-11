@@ -2,7 +2,7 @@ import {
   useState,
   useEffect
 } from 'react'
-import Head from 'next/head'
+import DynamicMeta from 'components/dynamic-meta'
 import Error from 'next/error'
 import Container from 'components/container'
 import Layout from 'components/layout'
@@ -49,17 +49,12 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
   return (
     <>
       <Layout>
-        <Head>
-          <title>{name} - MEZCLA</title>
-          <meta key="desc" name="description" content={description} />
-          <meta key="tw-img-src" name="twitter:image" content={defaultImg} />
-          <meta key="tw-title" name="twitter:title" content={name} />
-          <meta key="tw-desc" name="twitter:description" content={description} />
-          <meta key="og-img" property="og:image" content={defaultImg} />
-          <meta key="og-title" property="og:title" content={name} />
-          <meta key="og-url" property="og:url" content={`https://mezcla.xyz/item/${itemSlug}`} />
-          <meta key="og-desc" property="og:description" content={description} />
-        </Head>
+        <DynamicMeta
+          title={`${name} - MEZCLA`}
+          url={`https://mezcla.xyz/item/${itemSlug}`}
+          imageUrl={defaultImg}
+          description={description}
+        />
         <div className="px-6 pt-12 pb-6">
           <main className="mb-6 mx-auto lg:mb-12 lg:w-3/5">
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
