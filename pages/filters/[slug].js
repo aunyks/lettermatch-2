@@ -25,14 +25,14 @@ const ItemFiltersPage = ({ errorCode, itemName, itemSlug, filtersList }) => {
           </h1>
           <div className="lg:px-64">
             {
-              filtersList.map(({ mediaType, mediaUrl, name, description, id, platforms }) => {
+              filtersList.map(({ mediaType, mediaUrl, name, description, id, platforms, poster }) => {
                 let media = null
                 if (mediaType === 'image') {
                   media = <img src={mediaUrl} className="w-full" />
                 } else {
                   // video
                   media = (
-                    <video loop muted autoPlay className="w-full">
+                    <video loop muted autoPlay className="w-full" poster={poster}>
                       <source src={mediaUrl} type="video/mp4" />
                     </video>
                   )
