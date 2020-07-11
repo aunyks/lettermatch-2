@@ -22,7 +22,7 @@ const ElementalFiltersPage = ({ errorCode, filtersList }) => {
           <h1 className="tracking-tight font-bold text-5xl text-center">
             ELEMENTAL Collection Filters
           </h1>
-          <div className={`${filtersList.length > 0 ? 'lg:px-64 my-5 mx-auto grid grid-cols-1 lg:grid-cols-3' : ''}`}>
+          <div className="lg:px-64">
             {
               filtersList.length > 0 && filtersList.map(({ mediaType, mediaUrl, name, description, id, platforms }) => {
                 let media = null
@@ -99,7 +99,7 @@ export async function getServerSideProps() {
       seconds: thisFilter.additionDate.seconds,
       nanoseconds: thisFilter.additionDate.nanoseconds
     }
-    ffiltersList = [thisFilter, ...filtersList]
+    filtersList = [thisFilter, ...filtersList]
   })
   return { props: { filtersList, errorCode: false } }
 }
