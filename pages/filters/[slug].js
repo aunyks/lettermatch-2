@@ -3,6 +3,7 @@ import Error from 'next/error'
 import Layout from 'components/layout'
 import firebase from 'firebase/clientApp'
 import Instagram from 'components/ig'
+import Snapchat from 'components/snapchat'
 
 const ItemFiltersPage = ({ errorCode, itemName, itemSlug, filtersList }) => {
   if (errorCode) {
@@ -109,7 +110,7 @@ export async function getServerSideProps({ params }) {
       seconds: thisFilter.additionDate.seconds,
       nanoseconds: thisFilter.additionDate.nanoseconds
     }
-    filtersList.push(thisFilter)
+    filtersList = [thisFilter, ...filtersList]
   })
   filtersList.sort((firstFilter, secondFilter) =>
     firstFilter.additionDate.seconds - secondFilter.additionDate.seconds)

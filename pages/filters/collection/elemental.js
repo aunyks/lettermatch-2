@@ -3,6 +3,7 @@ import Error from 'next/error'
 import Layout from 'components/layout'
 import firebase from 'firebase/clientApp'
 import Instagram from 'components/ig'
+import Snapchat from 'components/snapchat'
 
 const ElementalFiltersPage = ({ errorCode, filtersList }) => {
   if (errorCode) {
@@ -98,7 +99,7 @@ export async function getServerSideProps() {
       seconds: thisFilter.additionDate.seconds,
       nanoseconds: thisFilter.additionDate.nanoseconds
     }
-    filtersList.push(thisFilter)
+    ffiltersList = [thisFilter, ...filtersList]
   })
   return { props: { filtersList, errorCode: false } }
 }

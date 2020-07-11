@@ -95,7 +95,7 @@ export async function getServerSideProps() {
       seconds: thisFilter.additionDate.seconds,
       nanoseconds: thisFilter.additionDate.nanoseconds
     }
-    filtersList.push(thisFilter)
+    filtersList = [thisFilter, ...filtersList]
   })
   return { props: { filtersList, errorCode: false } }
 }
