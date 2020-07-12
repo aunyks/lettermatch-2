@@ -47,13 +47,13 @@ const ElementalFiltersPage = ({ errorCode, filtersList }) => {
                           const platformUrl = platforms[platformId]
                           if (platformId === 'instagram') {
                             return (
-                              <a href={platformUrl} target="_blank" rel="noopener noreferrer">
+                              <a href={platformUrl} className="order-1 mr-2" target="_blank" rel="noopener noreferrer">
                                 <Instagram width={25} />
                               </a>
                             )
                           } else if (platformId === 'snapchat') {
                             return (
-                              <a href={platformUrl} target="_blank" rel="noopener noreferrer">
+                              <a href={platformUrl} className="order-2 mr-2" target="_blank" rel="noopener noreferrer">
                                 <Snapchat width={25} />
                               </a>
                             )

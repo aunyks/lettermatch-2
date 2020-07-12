@@ -106,61 +106,62 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
                   )
                 })
               }
-              <button
-                disabled={!variantExists}
-                className="primary-btn add-to-cart border rounded py-2 w-full my-2"
-                onClick={() => {
-                  const sku = chosenVariant.sku
-                  if (browserStorage !== null) {
-                    let currentCart = browserStorage.getItem('cart')
-                    if (currentCart === null) {
-                      currentCart = [{
-                        id: itemId,
-                        slug,
-                        name,
-                        price,
-                        img: image,
-                        qty: 1,
-                        sku
-                      }]
-                    } else {
-                      const itemWithVariantSku = cartItem => cartItem.sku === chosenVariant.sku
-                      const trueCart = JSON.parse(currentCart)
-                      if (trueCart.some(itemWithVariantSku)) {
-                        // increment the item quantity if this variant's in the cart
-                        const cartItemIndex = trueCart.findIndex(itemWithVariantSku)
-                        currentCart = [...trueCart]
-                        currentCart[cartItemIndex].qty = currentCart[cartItemIndex].qty + 1
-                      } else {
-                        // add it to the cart brand new
-                        currentCart = [...trueCart, {
+              <div className="grid grid-cols-1 gap-1 lg:grid-cols-2 mt-2 mb-3">
+                <button
+                  disabled={!variantExists}
+                  className="primary-btn add-to-cart border rounded py-2"
+                  onClick={() => {
+                    const sku = chosenVariant.sku
+                    if (browserStorage !== null) {
+                      let currentCart = browserStorage.getItem('cart')
+                      if (currentCart === null) {
+                        currentCart = [{
                           id: itemId,
                           slug,
                           name,
                           price,
                           img: image,
-                          sku,
-                          qty: 1
+                          qty: 1,
+                          sku
                         }]
+                      } else {
+                        const itemWithVariantSku = cartItem => cartItem.sku === chosenVariant.sku
+                        const trueCart = JSON.parse(currentCart)
+                        if (trueCart.some(itemWithVariantSku)) {
+                          // increment the item quantity if this variant's in the cart
+                          const cartItemIndex = trueCart.findIndex(itemWithVariantSku)
+                          currentCart = [...trueCart]
+                          currentCart[cartItemIndex].qty = currentCart[cartItemIndex].qty + 1
+                        } else {
+                          // add it to the cart brand new
+                          currentCart = [...trueCart, {
+                            id: itemId,
+                            slug,
+                            name,
+                            price,
+                            img: image,
+                            sku,
+                            qty: 1
+                          }]
+                        }
+                      }
+                      browserStorage.setItem('cart', JSON.stringify(currentCart))
+                      window.postMessage(browserStorage.getItem('cart'), window.location.origin)
+                      if (confirm('Item added to cart! Ready to check out?')) {
+                        window.location.pathname = '/cart'
                       }
                     }
-                    browserStorage.setItem('cart', JSON.stringify(currentCart))
-                    window.postMessage(browserStorage.getItem('cart'), window.location.origin)
-                    if (confirm('Item added to cart! Ready to check out?')) {
-                      window.location.pathname = '/cart'
-                    }
-                  }
-                }}>
-                Add to Cart
+                  }}>
+                  Add to Cart
               </button>
-              <p className="text-justify text-base">
-                {description}
-                <br />
                 <a
                   href={`/filters/${slug}`}
-                  className="my-4 inline-block bg-black text-white rounded-full no-underline px-6 py-1 lg:px-4 lg:py-1">
+                  className="text-center block bg-white border-2 border-black rounded py-2">
                   Filters
-                </a>
+              </a>
+              </div>
+              <p className="text-justify text-base">
+                {description}
               </p>
             </div>
           </main>
