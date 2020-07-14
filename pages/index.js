@@ -55,7 +55,7 @@ const HomePage = ({ featuredItems }) => {
               Extend your reality
           </h1>
             <h2 className="text-xl lg:text-3xl lg:w-1/2">
-              Find clothing, posters and accessories with mixed reality experiences
+              Find clothing and accessories with mixed reality experiences
           </h2>
             <div className="mt-3">
               <a href="/shop" className="primary-btn inline-block text-xl lg:text-2xl px-4 py-2 leading-none border rounded mt-0">
