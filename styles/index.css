@@ -64,54 +64,28 @@ path {
   background: linear-gradient(to right, #f0f, #00f);
  }
 
-/*
+ .demo-item {
+   z-index: -2;
+ }
 
-@media (prefers-color-scheme: dark) {
-  html, body {
-    background: #222;
-    color: white;
-  }
+ .demo-phone {
+   opacity: 0;
+  transition: all 0.5s ease;
+   position: absolute;
+   height: 75%;
+   z-index: 0;
+   transform: translate(75%, -95%);
+ }
 
-  #banner-alert {
-    background: white;
-    border-color: #222;
-  }
+ .demo-phone.scanning {
+   opacity: 1;
+    transform: rotate(2deg) translate(65%, -105%);
+ }
 
-  #navbar {
-    border-bottom-color: white;
-  }
-
-  .bold-border-btn {
-    border-color: white;
-  }
-
-  select {
-    background: #444;
-  }
-  
-  .add-to-cart:disabled,
-  .add-to-cart[disabled] {
-    background: #ccc;
-  }
-
-  .cart-qty {
-    border-color: white;
-  }
-
-  input[type="text"],input[type="email"] {
-    color: black
-  }
-
-  path {
-    fill: white;
-  }
-
-  #footer {
-    background: #333;
-    border-color: black;
-  }
-}
-*/
+ .demo-phone.done {
+   opacity: 0;
+  transform: translate(25%, -95%);
+ }
 
 @media only screen and (max-width: 640px) {
 
@@ -122,4 +96,18 @@ path {
   .nav-highlight::after {
     height: 2px;
    }
+
+   .demo-phone {
+    height: auto;
+    width: 35%;
+    transform: translate(70%, -95%);
+  }
+
+   .demo-phone.scanning {
+     transform: rotate(2deg) translate(65%, -110%);
+    }
+
+    .demo-phone.done {
+      transform: translate(25%, -105%);
+     }
 }

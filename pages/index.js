@@ -1,3 +1,7 @@
+import {
+  useState,
+  useEffect
+} from 'react'
 import Head from 'next/head'
 import Container from 'components/container'
 import Layout from 'components/layout'
@@ -32,6 +36,28 @@ const HomePage = ({ featuredItems }) => {
     )
   }
 
+  const [demoState, setDemoState] = useState('normal')
+
+  useEffect(() => {
+    switch (demoState) {
+      case 'normal':
+        setTimeout(() => {
+          setDemoState('scanning')
+        }, 500)
+        break;
+      case 'scanning':
+        setTimeout(() => {
+          setDemoState('done')
+        }, 1000)
+        break;
+      case 'done':
+        // do nothing
+        break;
+      default:
+      // do nothing
+    }
+  })
+
   return (
     <>
       <Layout>
@@ -39,29 +65,23 @@ const HomePage = ({ featuredItems }) => {
           <title>MEZCLA - Beyond reality</title>
           <meta name="google-site-verification" content="MyNil_49wI2nJ3zc8VzY5bS4-fz8vVOkTVrBn1oexIA" />
         </Head>
-        {/* 
-        <video
-          style={{ zIndex: '-1', top: '20px', width: '100vmax' }}
-          className="opacity-50 absolute left-0 right-0 bottom-0"
-          loop muted autoPlay poster="URL/TO/poster.jpg">
-          <source src="/assets/rm.mp4" type="video/mp4" />
-          <source src="URL/TO/video.webm" type="video/webm" />
-          <source src="URL/TO/video.ogv" type="video/ogv" />
-        </video>
-        */}
-        <section style={{ height: `90vh` }} className="px-6 py-8 flex flex-col justify-center">
-          <div>
+        <section style={{ height: `90vh` }} className="px-6 pt-8 pb-4 flex flex-col lg:flex-row">
+          <div className="order-2 lg:order-1 flex flex-col justify-center pt-4 lg:pt-0">
             <h1 className="text-3xl lg:text-6xl font-bold">
               Extend your reality
-          </h1>
-            <h2 className="text-xl lg:text-3xl lg:w-1/2">
+            </h1>
+            <h2 className="text-xl lg:text-3xl lg:w-full">
               Find clothing and accessories with mixed reality experiences
-          </h2>
+            </h2>
             <div className="mt-3">
               <a href="/shop" className="primary-btn inline-block text-xl lg:text-2xl px-4 py-2 leading-none border rounded mt-0">
                 Shop now
-            </a>
+              </a>
             </div>
+          </div>
+          <div className="order-1 lg:order-2">
+            <img className="demo-item mx-auto h-auto w-full lg:h-full lg:w-auto" src="/assets/img/demo-item.jpg" />
+            <img className={`demo-phone ${demoState}`} src="/assets/img/transparent-phone.png" />
           </div>
         </section>
         <section className="px-6 lg:px-0 py-16 bg-black text-white">

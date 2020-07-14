@@ -39,7 +39,7 @@ export default function Navbar({ alert }) {
   }, [])
   return (
     <nav id="navbar"
-      className="bg-white top-0 inset-x-0 fixed block">
+      className="z-50 bg-white top-0 inset-x-0 fixed block">
       {alert}
       <div className="flex items-center justify-between flex-wrap px-5 py-3">
         <div className="flex items-center flex-shrink-0 mr-6">

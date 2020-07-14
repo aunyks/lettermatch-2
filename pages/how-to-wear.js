@@ -32,7 +32,7 @@ export default function AboutPage() {
               <h2 className="font-bold text-3xl">For the filters</h2>
               <p>
                 If you're looking to take your pictures to the next level with our <a className="underline" href="/filters">social media filters</a>, pinch your shirt at the top corners of your chest and hold it up.
-                This ensures that the design is flat for the camera to get the best quality out of the filter. Make sure the camera is pointing straight at the design for best results.
+                This ensures that the design is flat for the camera to get the best quality out of the filter. Make sure the camera is pointing straight at the design for best results. And don't be afraid to get close to the camera to make sure the design is clear and in frame.
               </p>
             </section>
           </div>
