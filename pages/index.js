@@ -42,13 +42,18 @@ const HomePage = ({ featuredItems }) => {
     switch (demoState) {
       case 'normal':
         setTimeout(() => {
-          setDemoState('scanning')
+          setDemoState('load-scan')
         }, 500)
+        break;
+      case 'load-scan':
+        setTimeout(() => {
+          setDemoState('scanning')
+        }, 1000)
         break;
       case 'scanning':
         setTimeout(() => {
           setDemoState('done')
-        }, 1000)
+        }, 3000)
         break;
       case 'done':
         // do nothing
@@ -81,6 +86,8 @@ const HomePage = ({ featuredItems }) => {
           </div>
           <div className="order-1 lg:order-2">
             <img className="demo-item mx-auto h-auto w-full lg:h-full lg:w-auto" src="/assets/img/demo-item.jpg" />
+            <span className={`demo-loading-text ${demoState} font-bold text-white`}>MEZCLA</span>
+            <img className={`demo-image ${demoState}`} src="/assets/img/demo-image.gif" />
             <img className={`demo-phone ${demoState}`} src="/assets/img/transparent-phone.png" />
           </div>
         </section>

@@ -74,18 +74,42 @@ path {
    position: absolute;
    height: 75%;
    z-index: 0;
-   transform: translate(75%, -95%);
+   transform: translate(11.5vh, -20vh);
  }
 
- .demo-phone.scanning {
+ .demo-loading-text {
+   font-size: 1.5em;
+   position: absolute;
+  opacity: 0;
+  transform: translate(36vh, -50vh);
+  transition: all 1.25s ease-in-out;
+ }
+
+ .demo-loading-text.load-scan {
+  opacity: 1;
+ }
+
+ .demo-phone.load-scan, .demo-phone.scanning {
    opacity: 1;
-    transform: rotate(2deg) translate(65%, -105%);
+    transform: rotate(2deg) translate(11.5vw, -80vh);
  }
 
  .demo-phone.done {
    opacity: 0;
   transform: translate(25%, -95%);
  }
+
+ .demo-image {
+   opacity: 0;
+   position: absolute;
+   width: 10%;
+   transform: translate(167.5%, -199%);
+   transition: all 1.25s ease-in;
+ }
+
+ .demo-image.scanning {
+  opacity: 1;
+}
 
 @media only screen and (max-width: 640px) {
 
@@ -103,11 +127,21 @@ path {
     transform: translate(70%, -95%);
   }
 
-   .demo-phone.scanning {
-     transform: rotate(2deg) translate(65%, -110%);
+  .demo-phone.load-scan .demo-phone.scanning {
+     transform: rotate(2deg) translate(55%, -140%);
     }
 
     .demo-phone.done {
       transform: translate(25%, -105%);
      }
+
+     .demo-loading-text {
+       font-size: 0.75em;
+     transform: translate(200%, -875%);
+    }
+
+    .demo-image {
+      width: 21.5%;
+      transform: translate(147%, -198%);
+    }
 }
