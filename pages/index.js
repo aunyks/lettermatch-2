@@ -1,7 +1,3 @@
-import {
-  useState,
-  useEffect
-} from 'react'
 import Head from 'next/head'
 import Container from 'components/container'
 import Layout from 'components/layout'
@@ -36,33 +32,6 @@ const HomePage = ({ featuredItems }) => {
     )
   }
 
-  const [demoState, setDemoState] = useState('normal')
-
-  useEffect(() => {
-    switch (demoState) {
-      case 'normal':
-        setTimeout(() => {
-          setDemoState('load-scan')
-        }, 500)
-        break;
-      case 'load-scan':
-        setTimeout(() => {
-          setDemoState('scanning')
-        }, 1000)
-        break;
-      case 'scanning':
-        setTimeout(() => {
-          setDemoState('done')
-        }, 3000)
-        break;
-      case 'done':
-        // do nothing
-        break;
-      default:
-      // do nothing
-    }
-  })
-
   return (
     <>
       <Layout>
@@ -84,11 +53,8 @@ const HomePage = ({ featuredItems }) => {
               </a>
             </div>
           </div>
-          <div className="order-1 lg:order-2">
-            <img className="demo-item mx-auto h-auto w-full lg:h-full lg:w-auto" src="/assets/img/demo-item.jpg" />
-            <span className={`demo-loading-text ${demoState} font-bold text-white`}>MEZCLA</span>
-            <img className={`demo-image ${demoState}`} src="/assets/img/demo-image.gif" />
-            <img className={`demo-phone ${demoState}`} src="/assets/img/transparent-phone.png" />
+          <div className="order-1 lg:order-2 flex flex-col justify-center">
+            <img className="demo-item mx-auto my-auto w-full" src="/assets/img/demo.gif" />
           </div>
         </section>
         <section className="px-6 lg:px-0 py-16 bg-black text-white">
