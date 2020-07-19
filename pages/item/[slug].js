@@ -160,9 +160,13 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
                   Filters
               </a>
               </div>
-              <p className="text-justify text-base">
-                {description}
-              </p>
+              {
+                description.split('\\n').map(paragraph => (
+                  <p className="text-justify text-base mb-4 lg:mt-2">
+                    {paragraph}
+                  </p>
+                ))
+              }
             </div>
           </main>
           <section className="mx-auto lg:w-3/5">
