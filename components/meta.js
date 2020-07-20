@@ -20,6 +20,7 @@ export default function Meta() {
         sizes="16x16"
         href="/favicon/favicon-16x16.png"
       />
+      <meta name="facebook-domain-verification" content="8hqvy02igvyzpg8hqvk6zfs5vea93z" />
       <link rel="manifest" href="/favicon/site.webmanifest" />
       <link rel="shortcut icon" href="/favicon/favicon.ico" />
       <meta name="msapplication-TileColor" content="#000000" />
