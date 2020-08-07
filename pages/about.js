@@ -23,7 +23,7 @@ export default function AboutPage() {
               We take the sustainable approach to apparel, as each of our items has not only physical designs but also accompanying <a className="underline" href="/filters">social media filters</a> that bring the items to life. Our approach helps us aggressively reduce waste by removing the need to purchase new items to get new designs.
             </p>
             <p className="my-4">
-              Join the movement. Expand your reality.
+              Apparel from the future, for the future. Join the movement. Expand your reality.
             </p>
           </div>
         </div>

@@ -28,12 +28,10 @@ export default function CollectionsDropdown({ }) {
         <a href="/collection/elemental" className="block px-4 py-2">
           ELEMENTAL
         </a>
-        {/*
         {bigScreen && <hr className="w-5/6 ml-4" />}
-        <a href="#" className="block px-4 py-2">
-          Cyber 1.0
-          </a>
-         */}
+        <a href="/collection/uncertain-future" className="block px-4 py-2">
+          Uncertain Future
+        </a>
       </div>
     </>
   )

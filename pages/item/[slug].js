@@ -239,7 +239,7 @@ export async function getServerSideProps({ params }) {
 
   // just random items for now
   const fbRelatedItems = await firebase.firestore().collection('items')
-    .limit(4)
+    .limit(5) // not sure why 5 instead of 4 tbh
     .get()
   let relatedItems = []
   fbRelatedItems.forEach(relatedItem => {
@@ -252,7 +252,9 @@ export async function getServerSideProps({ params }) {
       seconds: thisRelatedItem.additionDate.seconds,
       nanoseconds: thisRelatedItem.additionDate.nanoseconds
     }
-    relatedItems.push(thisRelatedItem)
+    if (relatedItems.length < 3) {
+      relatedItems.push(thisRelatedItem)
+    }
   })
   return { props: { item, relatedItems: relatedItems.slice(0, 3), itemSlug: slug, initialVariant: someVariant, errorCode: false } }
 }
