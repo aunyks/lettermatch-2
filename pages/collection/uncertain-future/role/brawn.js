@@ -55,7 +55,7 @@ const UFCollectionPage = ({ errorCode, itemsList }) => {
                   </div>
                 )
               }) : (
-                  <p className="my-3 lg:px-64 text-justify">Come back later to see items in this collection!</p>
+                  <p className="my-3 lg:px-64 text-justify">Coming soon. Follow us @mezclaxyz in the meantime.</p>
                 )
             }
           </div>
