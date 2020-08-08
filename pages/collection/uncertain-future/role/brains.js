@@ -27,7 +27,7 @@ const UFCollectionPage = ({ errorCode, itemsList }) => {
             Brains
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">
-            The brains of the group, this role performs all the strategic planning and coordination for the team.
+            The brains of the group, this role performs all the strategic planning and coordination for the team. Equipped with a cybernetic augmentation that allows for rapid and deep computation, no problem is too difficult to solve for this individual.
           </p>
           <div className={`${itemsList.length > 0 ? 'my-5 mx-auto grid grid-cols-1 lg:grid-cols-3' : ''}`}>
             {
