@@ -19,8 +19,8 @@ const UFCollectionPage = ({ errorCode, itemsList }) => {
         <DynamicMeta
           title="Uncertain Future: Brains Role - MEZCLA"
           url="https://mezcla.xyz/collection/uncertain-future"
-          imageUrl="/assets/img/uf-banner.jpg"
-          description="A vision of fashion that pushes the boundaries of reality, our ELEMENTAL Collection lends itself to be a canvas of the future and a celebration of the Earth we inhabit. This set of minimally designed, nature-inspired apparel is brought to life using the collection's filters."
+          imageUrl="/assets/img/uf-banner.png"
+          description="The brains of the group, this role performs all the strategic planning and coordination for the team. Equipped with a cybernetic augmentation that allows for rapid and deep computation, no problem is too difficult to solve for this individual."
         />
         <div className="px-6 pt-8 pb-6 flex flex-col">
           <h3 className="text-5xl text-center tracking-tight font-bold mt-6 inline px-3  mx-auto">
@@ -46,7 +46,7 @@ const UFCollectionPage = ({ errorCode, itemsList }) => {
                   </div>
                 )
               }) : (
-                  <p className="my-3 lg:px-64 text-justify">Coming soon. Follow us @mezclaxyz in the meantime.</p>
+                  <p className="my-3 lg:px-64 text-justify">Coming soon. Follow us @mezclaxyz for updates.</p>
                 )
             }
           </div>

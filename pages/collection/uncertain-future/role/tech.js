@@ -19,8 +19,8 @@ const UFCollectionPage = ({ errorCode, itemsList }) => {
         <DynamicMeta
           title="Uncertain Future: Tech Role - MEZCLA"
           url="https://mezcla.xyz/collection/uncertain-future"
-          imageUrl="/assets/img/uf-banner.jpg"
-          description="A vision of fashion that pushes the boundaries of reality, our ELEMENTAL Collection lends itself to be a canvas of the future and a celebration of the Earth we inhabit. This set of minimally designed, nature-inspired apparel is brought to life using the collection's filters."
+          imageUrl="/assets/img/uf-banner.png"
+          description="This role is the technology expert. The Tech is equipped with a cybernetic augmentation that enables a direct human-machine interface. This individual can interact with and manipulate machines with a passing thought."
         />
         <div className="px-6 pt-8 pb-6 flex flex-col">
           <h3 className="text-5xl text-center tracking-tight font-bold mt-6 inline px-3  mx-auto">
@@ -47,7 +47,7 @@ const UFCollectionPage = ({ errorCode, itemsList }) => {
                   </div>
                 )
               }) : (
-                  <p className="my-3 lg:px-64 text-justify">Coming soon. Follow us @mezclaxyz in the meantime.</p>
+                  <p className="my-3 lg:px-64 text-justify">Coming soon. Follow us @mezclaxyz for updates.</p>
                 )
             }
           </div>
