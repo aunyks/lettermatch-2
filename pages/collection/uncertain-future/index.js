@@ -46,19 +46,19 @@ const UFCollectionPage = () => {
           </p>
           <div className="my-5 mx-auto grid grid-cols-1 lg:grid-cols-3">
             <div className="role my-2 lg:my-0 lg:mx-2 border-8 border-black rounded-lg">
-              <a href="#" id="/collection/uncertain-future/role/brawn">
+              <a href="/collection/uncertain-future/role/brawn">
                 <img src="/assets/img/uncertain-future/brawn.jpg" alt="A woman illustrated with bright magenta and lime colors." />
                 <h3 className="py-6 pl-3 text-2xl font-bold text-left">Brawn</h3>
               </a>
             </div>
             <div className="role my-2 lg:my-0 lg:mx-2 border-8 border-black rounded-lg">
-              <a href="#" id="/collection/uncertain-future/role/brains">
+              <a href="/collection/uncertain-future/role/brains">
                 <img src="/assets/img/uncertain-future/brains.jpg" alt="A woman illustrated with bright magenta and lime colors." />
                 <h3 className="py-6 pl-3 text-2xl font-bold text-left">Brains</h3>
               </a>
             </div>
             <div className="role my-2 lg:my-0 lg:mx-2 border-8 border-black rounded-lg">
-              <a href="#" id="/collection/uncertain-future/role/tech">
+              <a href="/collection/uncertain-future/role/tech">
                 <img src="/assets/img/uncertain-future/tech.jpg" alt="A woman illustrated with bright magenta and lime colors." />
                 <h3 className="py-6 pl-3 text-2xl font-bold text-left">Tech</h3>
               </a>
