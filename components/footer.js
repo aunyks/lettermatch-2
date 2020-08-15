@@ -16,7 +16,8 @@ export default function Footer() {
             <div className="flex flex-col mb-2 lg:mb-0 lg:mr-4">
               <span className="font-bold text-sm uppercase">Shop</span>
               <a href="/shop" className="text-xs">All Items</a>
-              <a href="/collection/elemental" className="text-xs">ELEMENTAL Collection</a>
+              <a href="/collection/uncertain-future" className="text-xs">Uncertain Future</a>
+              <a href="/collection/elemental" className="text-xs">ELEMENTAL</a>
             </div>
             <div className="flex flex-col my-2 lg:my-0 lg:mx-4">
               <span className="font-bold text-sm uppercase">Company</span>
