@@ -42,7 +42,7 @@ const UFCollectionPage = () => {
             Uncertain Future
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">
-            An elite team from a dystopian future has arrived. Fit with their own unique skillset, each of these three has a unique role in completing every mission. But, their latest mission has proven to be a difficult task and they need your help. The time will come for you to choose your role and assist. This collection is coming soon.
+            An elite team from a dystopian future has arrived. Fit with their own unique skillset, each of these three has a unique role in completing every mission. But, their latest mission has proven to be a difficult task and they need your help. Choose your role and assist.
           </p>
           <div className="my-5 mx-auto grid grid-cols-1 lg:grid-cols-3">
             <div className="role my-2 lg:my-0 lg:mx-2 border-8 border-black rounded-lg">
