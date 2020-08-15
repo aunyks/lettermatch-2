@@ -1,6 +1,8 @@
 import Container from 'components/container'
 
 export default function Alert() {
+  return null
+  /*
   return (
     <div
       id="banner-alert"
@@ -14,4 +16,5 @@ export default function Alert() {
       </Container>
     </div>
   )
+  */
 }

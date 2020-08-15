@@ -11,7 +11,7 @@ export default function AboutPage() {
           <meta key="og-title" property="og:title" content="How to Wear - MEZCLA" />
           <meta key="og-url" property="og:url" content="https://mezcla.xyz/how-to-wear" />
         </Head>
-        <div className="pt-12 pb-6 flex flex-col">
+        <div className="pb-6 flex flex-col">
           <h1 className="tracking-tight font-bold text-3xl lg:text-5xl text-center">
             How To Show Off Your MEZCLA
           </h1>

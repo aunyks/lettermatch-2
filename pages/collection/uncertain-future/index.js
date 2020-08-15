@@ -37,8 +37,8 @@ const UFCollectionPage = () => {
             border-width: 2px;
           }
         `}</style>
-        <div className="px-6 pt-8 pb-6 flex flex-col">
-          <h3 id="heading-text" className="text-3xl lg:text-5xl text-left lg:text-center tracking-tighter font-bold mt-0 lg:mt-4 inline  mx-auto">
+        <div className="px-6 pb-6 flex flex-col">
+          <h3 id="heading-text" className="text-3xl lg:text-5xl text-left lg:text-center tracking-tighter font-bold inline  mx-auto">
             Uncertain Future
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">

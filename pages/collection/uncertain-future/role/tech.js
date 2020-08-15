@@ -22,8 +22,8 @@ const UFCollectionPage = ({ errorCode, itemsList }) => {
           imageUrl="/assets/img/uf-banner.png"
           description="This role is the technology expert. The Tech is equipped with a cybernetic augmentation that enables a direct human-machine interface. This individual can interact with and manipulate machines with a passing thought."
         />
-        <div className="px-6 pt-8 pb-6 flex flex-col">
-          <h3 className="text-5xl text-center tracking-tight font-bold mt-6 inline px-3  mx-auto">
+        <div className="px-6 pb-6 flex flex-col">
+          <h3 className="text-5xl text-center tracking-tight font-bold inline px-3  mx-auto">
             Tech
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">

@@ -31,8 +31,8 @@ const UFCollectionPage = ({ errorCode, itemsList }) => {
             border-width: 2px;
           }
         `}</style>
-        <div className="px-6 pt-8 pb-6 flex flex-col">
-          <h3 className="text-5xl text-center tracking-tight font-bold mt-6 inline px-3  mx-auto">
+        <div className="px-6 pb-6 flex flex-col">
+          <h3 className="text-5xl text-center tracking-tight font-bold inline px-3  mx-auto">
             Brawn
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">

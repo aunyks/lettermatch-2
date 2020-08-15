@@ -22,8 +22,8 @@ const ElementalCollectionPage = ({ errorCode, itemsList }) => {
           imageUrl="/assets/img/elemental-banner.jpg"
           description="A vision of fashion that pushes the boundaries of reality, our ELEMENTAL Collection lends itself to be a canvas of the future and a celebration of the Earth we inhabit. This set of minimally designed, nature-inspired apparel is brought to life using the collection's filters."
         />
-        <div className="px-6 pt-8 pb-6 flex flex-col">
-          <h3 className="text-5xl text-center tracking-tight font-bold mt-6 inline px-3  mx-auto">
+        <div className="px-6 pb-6 flex flex-col">
+          <h3 className="text-5xl text-center tracking-tight font-bold inline px-3  mx-auto">
             ELEMENTAL
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">

@@ -55,7 +55,7 @@ const ItemPage = ({ errorCode, item, relatedItems, itemSlug, initialVariant }) =
           imageUrl={defaultImg}
           description={description}
         />
-        <div className="px-6 pt-12 pb-6">
+        <div className="px-6 pb-6">
           <main className="mb-6 mx-auto lg:mb-12 lg:w-3/5">
             <h1 className="tracking-tight font-bold text-5xl lg:text-center">
               {name}

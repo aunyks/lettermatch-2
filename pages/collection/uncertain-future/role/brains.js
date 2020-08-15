@@ -22,8 +22,8 @@ const UFCollectionPage = ({ errorCode, itemsList }) => {
           imageUrl="/assets/img/uf-banner.png"
           description="The brains of the group, this role performs all the strategic planning and coordination for the team. Equipped with a cybernetic augmentation that allows for rapid and deep computation, no problem is too difficult to solve for this individual."
         />
-        <div className="px-6 pt-8 pb-6 flex flex-col">
-          <h3 className="text-5xl text-center tracking-tight font-bold mt-6 inline px-3  mx-auto">
+        <div className="px-6 pb-6 flex flex-col">
+          <h3 className="text-5xl text-center tracking-tight font-bold inline px-3  mx-auto">
             Brains
           </h3>
           <p className="my-3 lg:my-5 lg:px-64 text-justify">
