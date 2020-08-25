@@ -16,23 +16,20 @@
   box-shadow: 0px 0px 2px #000
 }
 
-select {
-  background: #eee;
-}
-
-.add-to-cart:disabled,
-.add-to-cart[disabled] {
-  background: #667;
-}
-
-.cart-qty {
-  border-color: black;
+#hero-main-text {
+  text-decoration-color: #FF4433;
 }
 
 .primary-btn {
-  background: linear-gradient(45deg, #f0f, #00f);
+  background: #FF4433;
+  border-color: #FF4433;
   color: white;
-  border-width: 0;
+  border-width: 3px;
+}
+
+.secondary-btn {
+  border-color: #FF4433;
+  border-width: 3px;
 }
 
 .bold-border-btn {

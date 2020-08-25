@@ -6,7 +6,6 @@ import CollectionsDropdown from 'components/collections-dropdown'
 
 export default function Navbar({ alert }) {
   const [isOpen, setNavbarOpen] = useState(false)
-  const [cartLen, setCartLen] = useState(null)
   useEffect(() => {
     const smallScreenW = 640
     const mediumScreenW = 768
@@ -14,36 +13,14 @@ export default function Navbar({ alert }) {
     if (document.body.clientWidth >= largeScreenW) {
       setNavbarOpen(true)
     }
-
-
-    const updateCartSize = serializedCart => {
-      if (typeof serializedCart !== 'string') {
-        return
-      }
-      const deserializedCart = JSON.parse(serializedCart)
-      let cartSize = 0
-      deserializedCart.forEach(item => {
-        cartSize += item.qty
-      })
-      setCartLen(cartSize)
-    }
-    window.addEventListener('message', ({ origin, data }) => {
-      if (origin === window.location.origin) {
-        updateCartSize(data)
-      }
-    }, false)
-    const storedCart = window.localStorage.getItem('cart')
-    if (storedCart !== null) {
-      updateCartSize(storedCart)
-    }
   }, [])
   return (
     <nav id="navbar"
       className="z-50 bg-white top-0 inset-x-0 fixed block">
       {alert}
-      <div className="flex items-center justify-between flex-wrap px-5 py-3">
+      <div className="flex items-center justify-between flex-wrap px-5 py-5">
         <div className="flex items-center flex-shrink-0 mr-6">
-          <a href="/" className="font-semibold text-xl tracking-tight">MEZCLA</a>
+          <a href="/" className="text-xl tracking-tight">LetterMatch</a>
         </div>
         <div className="block lg:hidden">
           <button onClick={() => setNavbarOpen(!isOpen)} className="flex items-center">
@@ -59,32 +36,12 @@ export default function Navbar({ alert }) {
           </div>
           <div>
             {/* RIGHT SIDE OF NAV (LARGE SCREEN) */}
-            <a href="/" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Home
-            </a>
-            <CollectionsDropdown />
-            <a href="/filters" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Filters
-            </a>
-            <a href="/shop" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Shop
-            </a>
             <a href="/about" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
               About
             </a>
-
-            {/*
-              <strong className="mr-4 hidden lg:inline-block">|</strong>
-              <a href="#" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-                Log In
+            <a href="#" className="primary-btn inline-block text-sm px-2 py-2 leading-none rounded mt-4 lg:mt-0">
+              Early Access
               </a>
-              <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded hover:border-transparent mt-4 lg:mt-0">
-                Sign up
-              </a>
-            */}
-            <a href="/cart" className="lg:border-b-2 block mt-4 lg:inline-block lg:mt-0 mr-4">
-              {cartLen === null ? 'Cart (0)' : `Cart (${cartLen})`}
-            </a>
           </div>
         </div>
       </div>
