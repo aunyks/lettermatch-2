@@ -5,20 +5,17 @@ import Instagram from 'components/ig'
 export default function Footer() {
   return (
     <footer id="footer" className="border-t border-accent-2 py-5">
-      <Container>
+      <div className="container px-6 lg:px-16">
         <div className="flex flex-col lg:flex-row w-full justify-between">
           <div id="info-side" className="flex flex-col lg:flex-row w-full lg:w-1/2">
-            {/*<div className="flex flex-col mb-2 lg:mb-0 lg:mr-4">
-              <span className="font-bold text-sm uppercase">Learn</span>
-              <a href="/how-to-wear" className="text-xs">How to wear</a>
-              <a href="/creators" className="text-xs">Make your own filters</a>
-  </div>*/}
-            <div className="flex flex-col my-2 lg:my-0 lg:mx-4">
+            <div className="flex flex-col my-2 lg:my-0">
               <span className="font-bold text-sm uppercase">Company</span>
-              <a href="/about" className="text-xs">About</a>
-              <span className="text-xs cursor-pointer" onClick={() => alert('support@lettermatch.co')}>
-                Support
-              </span>
+              <a href="mailto:support@lettermatch.co" className="text-xs">Support</a>
+              {/*
+                <span className="text-xs cursor-pointer" onClick={() => alert('support@lettermatch.co')}>
+                  Support
+                </span>
+              */}
             </div>
           </div>
           <div id="social-side" className="flex flex-col lg:justify-end w-full lg:w-1/2">
@@ -50,7 +47,7 @@ export default function Footer() {
             </span>
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   )
 }

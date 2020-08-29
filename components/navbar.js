@@ -18,7 +18,7 @@ export default function Navbar({ alert }) {
     <nav id="navbar"
       className="z-50 bg-white top-0 inset-x-0 fixed block">
       {alert}
-      <div className="flex items-center justify-between flex-wrap px-5 py-5">
+      <div className="flex items-center justify-between flex-wrap px-6 lg:px-16 py-5">
         <div className="flex items-center flex-shrink-0 mr-6">
           <a href="/" className="text-xl tracking-tight">LetterMatch</a>
         </div>
@@ -36,11 +36,8 @@ export default function Navbar({ alert }) {
           </div>
           <div>
             {/* RIGHT SIDE OF NAV (LARGE SCREEN) */}
-            <a href="/about" className="block mt-4 lg:inline-block lg:mt-0 mr-4">
-              About
-            </a>
-            <a href="#" className="primary-btn inline-block text-sm px-2 py-2 leading-none rounded mt-4 lg:mt-0">
-              Early Access
+            <a href="#" className="primary-btn inline-block text-sm px-6 py-2 leading-none rounded mt-4 lg:mt-0">
+              Log in
               </a>
           </div>
         </div>
